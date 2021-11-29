@@ -13,7 +13,6 @@ partial class UnitTests
         var other = default(Unit);
 
         var actual = Unit.Value.CompareTo(other);
-
         Assert.Zero(actual);
     }
 
@@ -23,7 +22,6 @@ partial class UnitTests
         object? obj = default(Unit);
 
         var actual = Unit.Value.CompareTo(obj);
-
         Assert.Zero(actual);
     }
 
@@ -33,7 +31,6 @@ partial class UnitTests
         object? obj = null;
 
         var actual = Unit.Value.CompareTo(obj);
-
         Assert.AreEqual(1, actual);
     }
 
