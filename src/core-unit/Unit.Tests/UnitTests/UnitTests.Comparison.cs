@@ -32,7 +32,7 @@ partial class UnitTests
 
         var actual = Unit.Value.CompareTo(obj);
 
-        Assert.True(actual > 0);
+        Assert.Positive(actual);
         Assert.AreEqual(1, actual);
     }
 
@@ -44,7 +44,7 @@ partial class UnitTests
 
         Assert.AreEqual("obj", ex.ParamName);
 
-        var containsExpectedMessage = ex.Message.Contains("The object is not the Unit.", StringComparison.Ordinal);
+        var containsExpectedMessage = ex.Message.Contains("The object is not Unit.", StringComparison.Ordinal);
         Assert.True(containsExpectedMessage);
     }
 
