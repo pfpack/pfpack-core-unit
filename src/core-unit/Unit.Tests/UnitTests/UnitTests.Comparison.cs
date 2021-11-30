@@ -26,11 +26,13 @@ partial class UnitTests
     }
 
     [Test]
-    public void CompareTo_Obj_Null_ExpectOne()
+    public void CompareTo_Obj_Null_ExpectGreaterThanZero_ExpectOne()
     {
         object? obj = null;
 
         var actual = Unit.Value.CompareTo(obj);
+
+        Assert.True(actual > 0);
         Assert.AreEqual(1, actual);
     }
 
