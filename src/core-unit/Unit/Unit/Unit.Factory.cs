@@ -7,13 +7,5 @@ partial struct Unit
     public static readonly Unit Value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Unit Get()
-        =>
-        default;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Unit From<TResult>(TResult result) => result switch
-    {
-        _ => default
-    };
+    public static Unit Get() => default;
 }
