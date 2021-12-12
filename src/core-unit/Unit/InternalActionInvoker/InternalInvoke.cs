@@ -1,86 +1,91 @@
-﻿using static System.InternalActionInvoker;
+﻿namespace System;
 
-namespace System;
-
-partial class UnitExtensions
+partial class InternalActionInvoker
 {
-    public static Unit InvokeThenToUnit(
-        this Action action)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)));
+    internal static Unit InternalInvoke(Action action)
+    {
+        action.Invoke();
 
-    public static Unit InvokeThenToUnit<T>(
-        this Action<T> action,
-        T obj)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
-            obj);
+        return default;
+    }
 
-    public static Unit InvokeThenToUnit<T1, T2>(
-        this Action<T1, T2> action,
+    internal static Unit InternalInvoke<T>(Action<T> action, T obj)
+    {
+        action.Invoke(obj);
+
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2>(
+        Action<T1, T2> action,
         T1 arg1,
         T2 arg2)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3>(
-        this Action<T1, T2, T3> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3>(
+        Action<T1, T2, T3> action,
         T1 arg1,
         T2 arg2,
         T3 arg3)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4>(
-        this Action<T1, T2, T3, T4> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4>(
+        Action<T1, T2, T3, T4> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
             arg4);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5>(
-        this Action<T1, T2, T3, T4, T5> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5>(
+        Action<T1, T2, T3, T4, T5> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4,
         T5 arg5)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6>(
-        this Action<T1, T2, T3, T4, T5, T6> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6>(
+        Action<T1, T2, T3, T4, T5, T6> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4,
         T5 arg5,
         T6 arg6)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -88,8 +93,11 @@ partial class UnitExtensions
             arg5,
             arg6);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7>(
-        this Action<T1, T2, T3, T4, T5, T6, T7> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7>(
+        Action<T1, T2, T3, T4, T5, T6, T7> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -97,9 +105,8 @@ partial class UnitExtensions
         T5 arg5,
         T6 arg6,
         T7 arg7)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -108,8 +115,11 @@ partial class UnitExtensions
             arg6,
             arg7);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -118,9 +128,8 @@ partial class UnitExtensions
         T6 arg6,
         T7 arg7,
         T8 arg8)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -130,8 +139,11 @@ partial class UnitExtensions
             arg7,
             arg8);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -141,9 +153,8 @@ partial class UnitExtensions
         T7 arg7,
         T8 arg8,
         T9 arg9)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -154,8 +165,11 @@ partial class UnitExtensions
             arg8,
             arg9);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -166,9 +180,8 @@ partial class UnitExtensions
         T8 arg8,
         T9 arg9,
         T10 arg10)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -180,8 +193,11 @@ partial class UnitExtensions
             arg9,
             arg10);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -193,9 +209,8 @@ partial class UnitExtensions
         T9 arg9,
         T10 arg10,
         T11 arg11)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -208,8 +223,11 @@ partial class UnitExtensions
             arg10,
             arg11);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -222,9 +240,8 @@ partial class UnitExtensions
         T10 arg10,
         T11 arg11,
         T12 arg12)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -238,8 +255,11 @@ partial class UnitExtensions
             arg11,
             arg12);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -253,9 +273,8 @@ partial class UnitExtensions
         T11 arg11,
         T12 arg12,
         T13 arg13)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -270,8 +289,11 @@ partial class UnitExtensions
             arg12,
             arg13);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -286,9 +308,8 @@ partial class UnitExtensions
         T12 arg12,
         T13 arg13,
         T14 arg14)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -304,8 +325,11 @@ partial class UnitExtensions
             arg13,
             arg14);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -321,9 +345,8 @@ partial class UnitExtensions
         T13 arg13,
         T14 arg14,
         T15 arg15)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -340,8 +363,11 @@ partial class UnitExtensions
             arg14,
             arg15);
 
-    public static Unit InvokeThenToUnit<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
-        this Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action,
+        return default;
+    }
+
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
+        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -358,9 +384,8 @@ partial class UnitExtensions
         T14 arg14,
         T15 arg15,
         T16 arg16)
-        =>
-        InternalInvoke(
-            action ?? throw new ArgumentNullException(nameof(action)),
+    {
+        action.Invoke(
             arg1,
             arg2,
             arg3,
@@ -377,4 +402,7 @@ partial class UnitExtensions
             arg14,
             arg15,
             arg16);
+
+        return default;
+    }
 }
