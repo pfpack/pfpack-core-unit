@@ -2,75 +2,87 @@
 
 namespace System;
 
-partial struct Unit
+partial class InternalInvoker
 {
-    public static Task<Unit> InvokeAsync(
-        Func<Task> funcAsync)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)));
+    internal static async Task<Unit> InvokeAsync(Func<Task> funcAsync)
+    {
+        await funcAsync.Invoke().ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T>(
-        Func<T, Task> funcAsync,
-        T obj)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
-            obj);
+        return default;
+    }
 
-    public static Task<Unit> InvokeAsync<T1, T2>(
+    internal static async Task<Unit> InvokeAsync<T>(Func<T, Task> funcAsync, T obj)
+    {
+        await funcAsync.Invoke(obj).ConfigureAwait(false);
+
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2>(
         Func<T1, T2, Task> funcAsync,
         T1 arg1,
         T2 arg2)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
-            arg2);
+            arg2)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3>(
         Func<T1, T2, T3, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
-            arg3);
+            arg3)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4>(
         Func<T1, T2, T3, T4, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
-            arg4);
+            arg4)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5>(
         Func<T1, T2, T3, T4, T5, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4,
         T5 arg5)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
-            arg5);
+            arg5)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6>(
         Func<T1, T2, T3, T4, T5, T6, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -78,17 +90,20 @@ partial struct Unit
         T4 arg4,
         T5 arg5,
         T6 arg6)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5,
-            arg6);
+            arg6)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7>(
         Func<T1, T2, T3, T4, T5, T6, T7, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -97,18 +112,21 @@ partial struct Unit
         T5 arg5,
         T6 arg6,
         T7 arg7)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5,
             arg6,
-            arg7);
+            arg7)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -118,9 +136,8 @@ partial struct Unit
         T6 arg6,
         T7 arg7,
         T8 arg8)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -128,9 +145,13 @@ partial struct Unit
             arg5,
             arg6,
             arg7,
-            arg8);
+            arg8)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -141,9 +162,8 @@ partial struct Unit
         T7 arg7,
         T8 arg8,
         T9 arg9)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -152,9 +172,13 @@ partial struct Unit
             arg6,
             arg7,
             arg8,
-            arg9);
+            arg9)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -166,9 +190,8 @@ partial struct Unit
         T8 arg8,
         T9 arg9,
         T10 arg10)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -178,9 +201,13 @@ partial struct Unit
             arg7,
             arg8,
             arg9,
-            arg10);
+            arg10)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -193,9 +220,8 @@ partial struct Unit
         T9 arg9,
         T10 arg10,
         T11 arg11)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -206,9 +232,13 @@ partial struct Unit
             arg8,
             arg9,
             arg10,
-            arg11);
+            arg11)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -222,9 +252,8 @@ partial struct Unit
         T10 arg10,
         T11 arg11,
         T12 arg12)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -236,9 +265,13 @@ partial struct Unit
             arg9,
             arg10,
             arg11,
-            arg12);
+            arg12)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -253,9 +286,8 @@ partial struct Unit
         T11 arg11,
         T12 arg12,
         T13 arg13)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -268,9 +300,13 @@ partial struct Unit
             arg10,
             arg11,
             arg12,
-            arg13);
+            arg13)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -286,9 +322,8 @@ partial struct Unit
         T12 arg12,
         T13 arg13,
         T14 arg14)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -302,9 +337,13 @@ partial struct Unit
             arg11,
             arg12,
             arg13,
-            arg14);
+            arg14)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -321,9 +360,8 @@ partial struct Unit
         T13 arg13,
         T14 arg14,
         T15 arg15)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -338,9 +376,13 @@ partial struct Unit
             arg12,
             arg13,
             arg14,
-            arg15);
+            arg15)
+            .ConfigureAwait(false);
 
-    public static Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
+        return default;
+    }
+
+    internal static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
         Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, Task> funcAsync,
         T1 arg1,
         T2 arg2,
@@ -358,9 +400,8 @@ partial struct Unit
         T14 arg14,
         T15 arg15,
         T16 arg16)
-        =>
-        InternalInvoker.InvokeAsync(
-            funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
+    {
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -376,5 +417,9 @@ partial struct Unit
             arg13,
             arg14,
             arg15,
-            arg16);
+            arg16)
+            .ConfigureAwait(false);
+
+        return default;
+    }
 }

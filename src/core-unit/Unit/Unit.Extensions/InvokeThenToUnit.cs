@@ -2,21 +2,27 @@
 
 partial class UnitExtensions
 {
-    public static Unit InvokeThenToUnit(this Action action)
+    public static Unit InvokeThenToUnit(
+        this Action action)
         =>
-        Unit.Invoke(action);
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)));
 
-    public static Unit InvokeThenToUnit<T>(this Action<T> action, T obj)
+    public static Unit InvokeThenToUnit<T>(
+        this Action<T> action,
+        T obj)
         =>
-        Unit.Invoke(action, obj);
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
+            obj);
 
     public static Unit InvokeThenToUnit<T1, T2>(
         this Action<T1, T2> action,
         T1 arg1,
         T2 arg2)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2);
 
@@ -26,8 +32,8 @@ partial class UnitExtensions
         T2 arg2,
         T3 arg3)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3);
@@ -39,8 +45,8 @@ partial class UnitExtensions
         T3 arg3,
         T4 arg4)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -54,8 +60,8 @@ partial class UnitExtensions
         T4 arg4,
         T5 arg5)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -71,8 +77,8 @@ partial class UnitExtensions
         T5 arg5,
         T6 arg6)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -90,8 +96,8 @@ partial class UnitExtensions
         T6 arg6,
         T7 arg7)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -111,8 +117,8 @@ partial class UnitExtensions
         T7 arg7,
         T8 arg8)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -134,8 +140,8 @@ partial class UnitExtensions
         T8 arg8,
         T9 arg9)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -159,8 +165,8 @@ partial class UnitExtensions
         T9 arg9,
         T10 arg10)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -186,8 +192,8 @@ partial class UnitExtensions
         T10 arg10,
         T11 arg11)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -215,8 +221,8 @@ partial class UnitExtensions
         T11 arg11,
         T12 arg12)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -246,8 +252,8 @@ partial class UnitExtensions
         T12 arg12,
         T13 arg13)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -279,8 +285,8 @@ partial class UnitExtensions
         T13 arg13,
         T14 arg14)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -314,8 +320,8 @@ partial class UnitExtensions
         T14 arg14,
         T15 arg15)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
@@ -351,8 +357,8 @@ partial class UnitExtensions
         T15 arg15,
         T16 arg16)
         =>
-        Unit.Invoke(
-            action,
+        InternalInvoker.Invoke(
+            action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
             arg3,
