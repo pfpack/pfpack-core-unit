@@ -4,22 +4,22 @@ namespace System;
 
 partial class InternalInvoker
 {
-    internal static async ValueTask<Unit> InternalInvokeValueAsync(Func<ValueTask> funcAsync)
+    public static async Task<Unit> InvokeAsync(Func<Task> funcAsync)
     {
         await funcAsync.Invoke().ConfigureAwait(false);
 
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T>(Func<T, ValueTask> funcAsync, T obj)
+    public static async Task<Unit> InvokeAsync<T>(Func<T, Task> funcAsync, T obj)
     {
         await funcAsync.Invoke(obj).ConfigureAwait(false);
 
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2>(
-        Func<T1, T2, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2>(
+        Func<T1, T2, Task> funcAsync,
         T1 arg1,
         T2 arg2)
     {
@@ -31,8 +31,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3>(
-        Func<T1, T2, T3, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3>(
+        Func<T1, T2, T3, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3)
@@ -46,8 +46,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4>(
-        Func<T1, T2, T3, T4, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4>(
+        Func<T1, T2, T3, T4, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -63,8 +63,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5>(
-        Func<T1, T2, T3, T4, T5, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5>(
+        Func<T1, T2, T3, T4, T5, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -82,8 +82,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6>(
-        Func<T1, T2, T3, T4, T5, T6, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6>(
+        Func<T1, T2, T3, T4, T5, T6, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -103,8 +103,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7>(
-        Func<T1, T2, T3, T4, T5, T6, T7, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7>(
+        Func<T1, T2, T3, T4, T5, T6, T7, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -126,8 +126,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -151,8 +151,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -178,8 +178,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -207,8 +207,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -238,8 +238,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -271,8 +271,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -306,8 +306,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -343,8 +343,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -382,8 +382,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static async ValueTask<Unit> InternalInvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
-        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, ValueTask> funcAsync,
+    public static async Task<Unit> InvokeAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, Task> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,

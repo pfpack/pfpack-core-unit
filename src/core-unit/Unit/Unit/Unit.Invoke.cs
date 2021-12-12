@@ -1,20 +1,18 @@
-﻿using static System.InternalInvoker;
-
-namespace System;
+﻿namespace System;
 
 partial struct Unit
 {
     public static Unit Invoke(
         Action action)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)));
 
     public static Unit Invoke<T>(
         Action<T> action,
         T obj)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             obj);
 
@@ -23,7 +21,7 @@ partial struct Unit
         T1 arg1,
         T2 arg2)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2);
@@ -34,7 +32,7 @@ partial struct Unit
         T2 arg2,
         T3 arg3)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -47,7 +45,7 @@ partial struct Unit
         T3 arg3,
         T4 arg4)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -62,7 +60,7 @@ partial struct Unit
         T4 arg4,
         T5 arg5)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -79,7 +77,7 @@ partial struct Unit
         T5 arg5,
         T6 arg6)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -98,7 +96,7 @@ partial struct Unit
         T6 arg6,
         T7 arg7)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -119,7 +117,7 @@ partial struct Unit
         T7 arg7,
         T8 arg8)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -142,7 +140,7 @@ partial struct Unit
         T8 arg8,
         T9 arg9)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -167,7 +165,7 @@ partial struct Unit
         T9 arg9,
         T10 arg10)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -194,7 +192,7 @@ partial struct Unit
         T10 arg10,
         T11 arg11)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -223,7 +221,7 @@ partial struct Unit
         T11 arg11,
         T12 arg12)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -254,7 +252,7 @@ partial struct Unit
         T12 arg12,
         T13 arg13)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -287,7 +285,7 @@ partial struct Unit
         T13 arg13,
         T14 arg14)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -322,7 +320,7 @@ partial struct Unit
         T14 arg14,
         T15 arg15)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,
@@ -359,7 +357,7 @@ partial struct Unit
         T15 arg15,
         T16 arg16)
         =>
-        InternalInvoke(
+        InternalInvoker.Invoke(
             action ?? throw new ArgumentNullException(nameof(action)),
             arg1,
             arg2,

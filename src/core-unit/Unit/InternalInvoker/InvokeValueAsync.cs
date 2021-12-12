@@ -1,83 +1,89 @@
-﻿namespace System;
+﻿using System.Threading.Tasks;
+
+namespace System;
 
 partial class InternalInvoker
 {
-    internal static Unit InternalInvoke(Action action)
+    public static async ValueTask<Unit> InvokeValueAsync(Func<ValueTask> funcAsync)
     {
-        action.Invoke();
+        await funcAsync.Invoke().ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T>(Action<T> action, T obj)
+    public static async ValueTask<Unit> InvokeValueAsync<T>(Func<T, ValueTask> funcAsync, T obj)
     {
-        action.Invoke(obj);
+        await funcAsync.Invoke(obj).ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2>(
-        Action<T1, T2> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2>(
+        Func<T1, T2, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
-            arg2);
+            arg2)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3>(
-        Action<T1, T2, T3> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3>(
+        Func<T1, T2, T3, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
-            arg3);
+            arg3)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4>(
-        Action<T1, T2, T3, T4> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4>(
+        Func<T1, T2, T3, T4, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
-            arg4);
+            arg4)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5>(
-        Action<T1, T2, T3, T4, T5> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5>(
+        Func<T1, T2, T3, T4, T5, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
         T4 arg4,
         T5 arg5)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
-            arg5);
+            arg5)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6>(
-        Action<T1, T2, T3, T4, T5, T6> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6>(
+        Func<T1, T2, T3, T4, T5, T6, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -85,19 +91,20 @@ partial class InternalInvoker
         T5 arg5,
         T6 arg6)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5,
-            arg6);
+            arg6)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7>(
-        Action<T1, T2, T3, T4, T5, T6, T7> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7>(
+        Func<T1, T2, T3, T4, T5, T6, T7, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -106,20 +113,21 @@ partial class InternalInvoker
         T6 arg6,
         T7 arg7)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5,
             arg6,
-            arg7);
+            arg7)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -129,7 +137,7 @@ partial class InternalInvoker
         T7 arg7,
         T8 arg8)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -137,13 +145,14 @@ partial class InternalInvoker
             arg5,
             arg6,
             arg7,
-            arg8);
+            arg8)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -154,7 +163,7 @@ partial class InternalInvoker
         T8 arg8,
         T9 arg9)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -163,13 +172,14 @@ partial class InternalInvoker
             arg6,
             arg7,
             arg8,
-            arg9);
+            arg9)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -181,7 +191,7 @@ partial class InternalInvoker
         T9 arg9,
         T10 arg10)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -191,13 +201,14 @@ partial class InternalInvoker
             arg7,
             arg8,
             arg9,
-            arg10);
+            arg10)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -210,7 +221,7 @@ partial class InternalInvoker
         T10 arg10,
         T11 arg11)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -221,13 +232,14 @@ partial class InternalInvoker
             arg8,
             arg9,
             arg10,
-            arg11);
+            arg11)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -241,7 +253,7 @@ partial class InternalInvoker
         T11 arg11,
         T12 arg12)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -253,13 +265,14 @@ partial class InternalInvoker
             arg9,
             arg10,
             arg11,
-            arg12);
+            arg12)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -274,7 +287,7 @@ partial class InternalInvoker
         T12 arg12,
         T13 arg13)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -287,13 +300,14 @@ partial class InternalInvoker
             arg10,
             arg11,
             arg12,
-            arg13);
+            arg13)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -309,7 +323,7 @@ partial class InternalInvoker
         T13 arg13,
         T14 arg14)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -323,13 +337,14 @@ partial class InternalInvoker
             arg11,
             arg12,
             arg13,
-            arg14);
+            arg14)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -346,7 +361,7 @@ partial class InternalInvoker
         T14 arg14,
         T15 arg15)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -361,13 +376,14 @@ partial class InternalInvoker
             arg12,
             arg13,
             arg14,
-            arg15);
+            arg15)
+            .ConfigureAwait(false);
 
         return default;
     }
 
-    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
-        Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action,
+    public static async ValueTask<Unit> InvokeValueAsync<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
+        Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, ValueTask> funcAsync,
         T1 arg1,
         T2 arg2,
         T3 arg3,
@@ -385,7 +401,7 @@ partial class InternalInvoker
         T15 arg15,
         T16 arg16)
     {
-        action.Invoke(
+        await funcAsync.Invoke(
             arg1,
             arg2,
             arg3,
@@ -401,7 +417,8 @@ partial class InternalInvoker
             arg13,
             arg14,
             arg15,
-            arg16);
+            arg16)
+            .ConfigureAwait(false);
 
         return default;
     }

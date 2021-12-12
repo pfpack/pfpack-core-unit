@@ -1,6 +1,4 @@
-﻿using static System.InternalInvoker;
-
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace System;
 
@@ -9,14 +7,14 @@ partial class UnitExtensions
     public static ValueTask<Unit> InvokeThenToUnitValueAsync(
         this Func<ValueTask> funcAsync)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)));
 
     public static ValueTask<Unit> InvokeThenToUnitValueAsync<T>(
         this Func<T, ValueTask> funcAsync,
         T obj)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             obj);
 
@@ -25,7 +23,7 @@ partial class UnitExtensions
         T1 arg1,
         T2 arg2)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2);
@@ -36,7 +34,7 @@ partial class UnitExtensions
         T2 arg2,
         T3 arg3)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -49,7 +47,7 @@ partial class UnitExtensions
         T3 arg3,
         T4 arg4)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -64,7 +62,7 @@ partial class UnitExtensions
         T4 arg4,
         T5 arg5)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -81,7 +79,7 @@ partial class UnitExtensions
         T5 arg5,
         T6 arg6)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -100,7 +98,7 @@ partial class UnitExtensions
         T6 arg6,
         T7 arg7)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -121,7 +119,7 @@ partial class UnitExtensions
         T7 arg7,
         T8 arg8)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -144,7 +142,7 @@ partial class UnitExtensions
         T8 arg8,
         T9 arg9)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -169,7 +167,7 @@ partial class UnitExtensions
         T9 arg9,
         T10 arg10)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -196,7 +194,7 @@ partial class UnitExtensions
         T10 arg10,
         T11 arg11)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -225,7 +223,7 @@ partial class UnitExtensions
         T11 arg11,
         T12 arg12)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -256,7 +254,7 @@ partial class UnitExtensions
         T12 arg12,
         T13 arg13)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -289,7 +287,7 @@ partial class UnitExtensions
         T13 arg13,
         T14 arg14)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -324,7 +322,7 @@ partial class UnitExtensions
         T14 arg14,
         T15 arg15)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
@@ -361,7 +359,7 @@ partial class UnitExtensions
         T15 arg15,
         T16 arg16)
         =>
-        InternalInvokeValueAsync(
+        InternalInvoker.InvokeValueAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
             arg1,
             arg2,
