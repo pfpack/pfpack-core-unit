@@ -1,4 +1,4 @@
-﻿using static System.InternalActionInvoker;
+﻿using static System.InternalInvoker;
 
 namespace System;
 

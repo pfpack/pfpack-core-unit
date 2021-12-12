@@ -1,4 +1,4 @@
-﻿using static System.InternalActionInvoker;
+﻿using static System.InternalInvoker;
 
 using System.Threading.Tasks;
 

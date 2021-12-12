@@ -2,7 +2,7 @@
 
 namespace System;
 
-partial class InternalActionInvoker
+partial class InternalInvoker
 {
     internal static async Task<Unit> InternalInvokeAsync(Func<Task> funcAsync)
     {

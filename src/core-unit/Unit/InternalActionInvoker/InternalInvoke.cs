@@ -1,6 +1,6 @@
 ﻿namespace System;
 
-partial class InternalActionInvoker
+partial class InternalInvoker
 {
     internal static Unit InternalInvoke(Action action)
     {
