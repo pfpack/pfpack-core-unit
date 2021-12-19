@@ -17,7 +17,7 @@
     <Description>PrimeFuncPack Core.Unit is a core library for .NET consisting of Unit type targeted for use in functional programming.</Description>
     <RootNamespace>System</RootNamespace>
     <AssemblyName>PrimeFuncPack.Core.Unit</AssemblyName>
-    <Version>2.1.1-rc.1.0.0</Version>
+    <Version>2.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
