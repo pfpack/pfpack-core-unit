@@ -6,7 +6,8 @@ namespace System;
 partial struct Unit
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static async Task<Unit> InternalInvokeAsync(Func<Task> funcAsync)
+    internal static async Task<Unit> InternalInvokeAsync(
+        Func<Task> funcAsync)
     {
         await funcAsync.Invoke().ConfigureAwait(false);
 
@@ -14,7 +15,9 @@ partial struct Unit
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static async Task<Unit> InternalInvokeAsync<T>(Func<T, Task> funcAsync, T obj)
+    internal static async Task<Unit> InternalInvokeAsync<T>(
+        Func<T, Task> funcAsync,
+        T obj)
     {
         await funcAsync.Invoke(obj).ConfigureAwait(false);
 

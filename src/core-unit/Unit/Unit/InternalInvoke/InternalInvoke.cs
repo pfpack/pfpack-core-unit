@@ -5,7 +5,8 @@ namespace System;
 partial struct Unit
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static Unit InternalInvoke(Action action)
+    internal static Unit InternalInvoke(
+        Action action)
     {
         action.Invoke();
 
@@ -13,7 +14,9 @@ partial struct Unit
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static Unit InternalInvoke<T>(Action<T> action, T obj)
+    internal static Unit InternalInvoke<T>(
+        Action<T> action,
+        T obj)
     {
         action.Invoke(obj);
 
