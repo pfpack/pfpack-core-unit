@@ -1,22 +1,30 @@
-﻿namespace System;
+﻿using System.Runtime.CompilerServices;
 
-partial class InternalInvoker
+namespace System;
+
+partial struct Unit
 {
-    internal static Unit Invoke(Action action)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke(
+        Action action)
     {
         action.Invoke();
 
         return default;
     }
 
-    internal static Unit Invoke<T>(Action<T> action, T obj)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T>(
+        Action<T> action,
+        T obj)
     {
         action.Invoke(obj);
 
         return default;
     }
 
-    internal static Unit Invoke<T1, T2>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2>(
         Action<T1, T2> action,
         T1 arg1,
         T2 arg2)
@@ -28,7 +36,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3>(
         Action<T1, T2, T3> action,
         T1 arg1,
         T2 arg2,
@@ -42,7 +51,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4>(
         Action<T1, T2, T3, T4> action,
         T1 arg1,
         T2 arg2,
@@ -58,7 +68,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5>(
         Action<T1, T2, T3, T4, T5> action,
         T1 arg1,
         T2 arg2,
@@ -76,7 +87,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6>(
         Action<T1, T2, T3, T4, T5, T6> action,
         T1 arg1,
         T2 arg2,
@@ -96,7 +108,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7>(
         Action<T1, T2, T3, T4, T5, T6, T7> action,
         T1 arg1,
         T2 arg2,
@@ -118,7 +131,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8> action,
         T1 arg1,
         T2 arg2,
@@ -142,7 +156,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9> action,
         T1 arg1,
         T2 arg2,
@@ -168,7 +183,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action,
         T1 arg1,
         T2 arg2,
@@ -196,7 +212,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action,
         T1 arg1,
         T2 arg2,
@@ -226,7 +243,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action,
         T1 arg1,
         T2 arg2,
@@ -258,7 +276,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action,
         T1 arg1,
         T2 arg2,
@@ -292,7 +311,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action,
         T1 arg1,
         T2 arg2,
@@ -328,7 +348,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action,
         T1 arg1,
         T2 arg2,
@@ -366,7 +387,8 @@ partial class InternalInvoker
         return default;
     }
 
-    internal static Unit Invoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Unit InternalInvoke<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
         Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action,
         T1 arg1,
         T2 arg2,
