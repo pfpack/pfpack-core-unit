@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace System;
 
@@ -12,5 +13,5 @@ partial struct Unit
 
     public override int GetHashCode()
         =>
-        HashCode.Combine(typeof(Unit));
+        HashCode.Combine(EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
 }
