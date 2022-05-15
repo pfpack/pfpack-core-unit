@@ -13,5 +13,6 @@ partial struct Unit
 
     public override int GetHashCode()
         =>
-        HashCode.Combine(EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
+        HashCode.Combine(
+            EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
 }
