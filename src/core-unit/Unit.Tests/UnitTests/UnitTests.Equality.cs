@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Core.Tests;
@@ -82,7 +83,7 @@ partial class UnitTests
         var source = Unit.Value;
         var actual = source.GetHashCode();
 
-        var expected = HashCode.Combine(typeof(Unit));
+        var expected = HashCode.Combine(EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
         Assert.AreEqual(expected, actual);
     }
 }
