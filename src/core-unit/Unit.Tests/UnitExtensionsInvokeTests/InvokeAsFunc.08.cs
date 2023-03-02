@@ -10,7 +10,7 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvokeTests
 {
     [Test]
-    public void InvokeThenToUnit_08_ActionIsNull_ExpectArgumentNullException()
+    public void InvokeAsFunc_08_ActionIsNull_ExpectArgumentNullException()
     {
         Action<StructType, RefType, string, int, object, DateTime, StructType?, decimal> action = null!;
 
@@ -23,12 +23,12 @@ partial class UnitExtensionsInvokeTests
         var arg7 = NullTextStructType;
         var arg8 = MinusSeventyOnePointThree;
 
-        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeThenToUnit(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         Assert.AreEqual("action", ex!.ParamName);
     }
 
     [Test]
-    public void InvokeThenToUnit_08_ExpectCallActionOnce()
+    public void InvokeAsFunc_08_ExpectCallActionOnce()
     {
         var mockAction = MockActionFactory.CreateMockAction<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?>();
         var action = new Action<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?>(mockAction.Object.Invoke);
@@ -42,7 +42,7 @@ partial class UnitExtensionsInvokeTests
         var arg7 = (StructType?)null;
         var arg8 = (decimal?)MinusSeventyOnePointThree;
 
-        var actual = action.InvokeThenToUnit(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+        var actual = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 
         Assert.AreEqual(Unit.Value, actual);
         mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8), Times.Once);

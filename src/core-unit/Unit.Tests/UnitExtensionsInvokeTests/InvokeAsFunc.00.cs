@@ -8,21 +8,21 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvokeTests
 {
     [Test]
-    public void InvokeThenToUnit_00_ActionIsNull_ExpectArgumentNullException()
+    public void InvokeAsFunc_00_ActionIsNull_ExpectArgumentNullException()
     {
         Action action = null!;
-        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeThenToUnit());
+        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeAsFunc());
 
         Assert.AreEqual("action", ex!.ParamName);
     }
 
     [Test]
-    public void InvokeThenToUnit_00_ExpectCallActionOnce()
+    public void InvokeAsFunc_00_ExpectCallActionOnce()
     {
         var mockAction = MockActionFactory.CreateMockAction();
         var action = new Action(mockAction.Object.Invoke);
 
-        var actual = action.InvokeThenToUnit();
+        var actual = action.InvokeAsFunc();
 
         Assert.AreEqual(Unit.Value, actual);
         mockAction.Verify(a => a.Invoke(), Times.Once);

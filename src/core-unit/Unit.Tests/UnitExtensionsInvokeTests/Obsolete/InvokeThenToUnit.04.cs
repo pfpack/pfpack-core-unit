@@ -9,6 +9,7 @@ namespace PrimeFuncPack.Core.Tests;
 
 partial class UnitExtensionsInvokeTests
 {
+    [Obsolete]
     [Test]
     public void InvokeThenToUnit_04_ActionIsNull_ExpectArgumentNullException()
     {
@@ -23,6 +24,7 @@ partial class UnitExtensionsInvokeTests
         Assert.AreEqual("action", ex!.ParamName);
     }
 
+    [Obsolete]
     [Test]
     public void InvokeThenToUnit_04_ExpectCallActionOnce()
     {

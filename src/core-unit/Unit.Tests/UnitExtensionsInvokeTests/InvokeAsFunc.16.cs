@@ -10,9 +10,9 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvokeTests
 {
     [Test]
-    public void InvokeThenToUnit_13_ActionIsNull_ExpectArgumentNullException()
+    public void InvokeAsFunc_16_ActionIsNull_ExpectArgumentNullException()
     {
-        Action<StructType, RefType, string, int, object, DateTime, StructType?, decimal, RefType, object, StructType, string, double> action = null!;
+        Action<StructType, RefType, string, int, object, DateTime, StructType?, decimal, RefType, object, StructType, string, double, RefType, string, long> action = null!;
 
         var arg1 = SomeTextStructType;
         var arg2 = PlusFifteenIdRefType;
@@ -27,16 +27,19 @@ partial class UnitExtensionsInvokeTests
         var arg11 = OtherTextStructType;
         var arg12 = SomeOtherText;
         var arg13 = PlusTwentyOnePointSeventyFive;
+        var arg14 = MinusFifteenIdRefType;
+        var arg15 = ThreeWhiteSpacesString;
+        var arg16 = long.MaxValue;
 
-        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeThenToUnit(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+        var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
         Assert.AreEqual("action", ex!.ParamName);
     }
 
     [Test]
-    public void InvokeThenToUnit_13_ExpectCallActionOnce()
+    public void InvokeAsFunc_16_ExpectCallActionOnce()
     {
-        var mockAction = MockActionFactory.CreateMockAction<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double>();
-        var action = new Action<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double>(mockAction.Object.Invoke);
+        var mockAction = MockActionFactory.CreateMockAction<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, string, long>();
+        var action = new Action<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, string, long>(mockAction.Object.Invoke);
 
         var arg1 = SomeTextStructType;
         var arg2 = (RefType?)null;
@@ -51,10 +54,13 @@ partial class UnitExtensionsInvokeTests
         var arg11 = OtherTextStructType;
         var arg12 = SomeOtherText;
         var arg13 = PlusTwentyOnePointSeventyFive;
+        var arg14 = (object?)null;
+        var arg15 = ThreeWhiteSpacesString;
+        var arg16 = long.MaxValue;
 
-        var actual = action.InvokeThenToUnit(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13);
+        var actual = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
 
         Assert.AreEqual(Unit.Value, actual);
-        mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13), Times.Once);
+        mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16), Times.Once);
     }
 }
