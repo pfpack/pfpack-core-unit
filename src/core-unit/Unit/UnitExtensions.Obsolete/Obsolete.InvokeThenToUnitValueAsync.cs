@@ -4,7 +4,7 @@ namespace System;
 
 partial class UnitExtensions
 {
-    // TODO: Remove the obsoletes on v3.0
+    // TODO: Remove the obsoletes in v3.0
 
     private const string ObsoleteMessage_InvokeThenToUnitValueAsync = "This method is obsolete. Call InvokeAsFuncValueAsync instead.";
 
