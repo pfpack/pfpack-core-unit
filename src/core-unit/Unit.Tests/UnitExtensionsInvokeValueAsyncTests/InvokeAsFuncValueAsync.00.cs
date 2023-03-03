@@ -9,21 +9,21 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvoketValueAsyncTests
 {
     [Test]
-    public void InvokeThenToUnitValueAsync_00_FuncIsNull_ExpectArgumentNullException()
+    public void InvokeAsFuncValueAsync_00_FuncIsNull_ExpectArgumentNullException()
     {
         Func<ValueTask> funcAsync = null!;
-        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeThenToUnitValueAsync().AsTask());
+        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncValueAsync().AsTask());
 
         Assert.AreEqual("funcAsync", ex!.ParamName);
     }
 
     [Test]
-    public async Task InvokeThenToUnitValueAsync_00_ExpectCallFuncOnce()
+    public async Task InvokeAsFuncValueAsync_00_ExpectCallFuncOnce()
     {
         var mockFuncAsync = MockFuncFactory.CreateMockFunc<ValueTask>(default);
         var funcAsync = new Func<ValueTask>(mockFuncAsync.Object.Invoke);
 
-        var actual = await funcAsync.InvokeThenToUnitValueAsync();
+        var actual = await funcAsync.InvokeAsFuncValueAsync();
 
         Assert.AreEqual(Unit.Value, actual);
         mockFuncAsync.Verify(f => f.Invoke(), Times.Once);

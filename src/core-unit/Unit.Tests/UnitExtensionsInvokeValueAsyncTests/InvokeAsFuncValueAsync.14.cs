@@ -11,9 +11,9 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvoketValueAsyncTests
 {
     [Test]
-    public void InvokeThenToUnitValueAsync_15_FuncIsNull_ExpectArgumentNullException()
+    public void InvokeAsFuncValueAsync_14_FuncIsNull_ExpectArgumentNullException()
     {
-        Func<StructType, RefType, string, int, object, DateTime, StructType?, decimal, RefType, object, StructType, string, double, RefType, string, ValueTask> funcAsync = null!;
+        Func<StructType, RefType, string, int, object, DateTime, StructType?, decimal, RefType, object, StructType, string, double, RefType, ValueTask> funcAsync = null!;
 
         var arg1 = SomeTextStructType;
         var arg2 = PlusFifteenIdRefType;
@@ -29,17 +29,16 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg12 = CustomText;
         var arg13 = PlusFortyOnePointSeventyFive;
         var arg14 = MinusFifteenIdRefType;
-        var arg15 = ThreeWhiteSpacesString;
 
-        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeThenToUnitValueAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15).AsTask());
+        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14).AsTask());
         Assert.AreEqual("funcAsync", ex!.ParamName);
     }
 
     [Test]
-    public async Task InvokeThenToUnitValueAsync_15_ExpectCallFuncOnce()
+    public async Task InvokeAsFuncValueAsync_14_ExpectCallFuncOnce()
     {
-        var mockFuncAsync = MockFuncFactory.CreateMockFunc<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, string, ValueTask>(default);
-        var funcAsync = new Func<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, string, ValueTask>(mockFuncAsync.Object.Invoke);
+        var mockFuncAsync = MockFuncFactory.CreateMockFunc<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, ValueTask>(default);
+        var funcAsync = new Func<StructType, RefType?, string, int, object?, DateTime, StructType?, decimal?, RefType, object, StructType, string, double, object?, ValueTask>(mockFuncAsync.Object.Invoke);
 
         var arg1 = SomeTextStructType;
         var arg2 = (RefType?)null;
@@ -55,11 +54,10 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg12 = CustomText;
         var arg13 = PlusFortyOnePointSeventyFive;
         var arg14 = (object?)null;
-        var arg15 = ThreeWhiteSpacesString;
 
-        var actual = await funcAsync.InvokeThenToUnitValueAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15);
+        var actual = await funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14);
 
         Assert.AreEqual(Unit.Value, actual);
-        mockFuncAsync.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15), Times.Once);
+        mockFuncAsync.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14), Times.Once);
     }
 }

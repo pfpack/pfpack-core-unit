@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsInvoketValueAsyncTests
 {
     [Test]
-    public void InvokeThenToUnitValueAsync_04_FuncIsNull_ExpectArgumentNullException()
+    public void InvokeAsFuncValueAsync_04_FuncIsNull_ExpectArgumentNullException()
     {
         Func<StructType, RefType, string, int, ValueTask> funcAsync = null!;
 
@@ -20,12 +20,12 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg3 = TabString;
         var arg4 = MinusFortyFive;
 
-        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeThenToUnitValueAsync(arg1, arg2, arg3, arg4).AsTask());
+        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3, arg4).AsTask());
         Assert.AreEqual("funcAsync", ex!.ParamName);
     }
 
     [Test]
-    public async Task InvokeThenToUnitValueAsync_04_ExpectCallFuncOnce()
+    public async Task InvokeAsFuncValueAsync_04_ExpectCallFuncOnce()
     {
         var mockFuncAsync = MockFuncFactory.CreateMockFunc<StructType, RefType?, string, int, ValueTask>(default);
         var funcAsync = new Func<StructType, RefType?, string, int, ValueTask>(mockFuncAsync.Object.Invoke);
@@ -35,7 +35,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg3 = TabString;
         var arg4 = MinusFortyFive;
 
-        var actual = await funcAsync.InvokeThenToUnitValueAsync(arg1, arg2, arg3, arg4);
+        var actual = await funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3, arg4);
 
         Assert.AreEqual(Unit.Value, actual);
         mockFuncAsync.Verify(f => f.Invoke(arg1, arg2, arg3, arg4), Times.Once);

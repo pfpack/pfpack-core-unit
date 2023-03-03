@@ -10,6 +10,7 @@ namespace PrimeFuncPack.Core.Tests;
 
 partial class UnitExtensionsInvoketValueAsyncTests
 {
+    [Obsolete]
     [Test]
     public void InvokeThenToUnitValueAsync_02_FuncIsNull_ExpectArgumentNullException()
     {
@@ -22,6 +23,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
         Assert.AreEqual("funcAsync", ex!.ParamName);
     }
 
+    [Obsolete]
     [Test]
     public async Task InvokeThenToUnitValueAsync_02_ExpectCallFuncOnce()
     {
