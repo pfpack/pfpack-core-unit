@@ -9,7 +9,7 @@ partial class UnitTests
     [Test]
     [TestCase(true)]
     [TestCase(false)]
-    public void From_ExpectUnitValue(
+    public void From_ExpectValue(
         bool isResultNull)
     {
         var result = isResultNull ? null : MinusFifteenIdRefType;
