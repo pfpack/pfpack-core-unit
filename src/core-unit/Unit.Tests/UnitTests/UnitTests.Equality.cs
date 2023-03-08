@@ -78,12 +78,21 @@ partial class UnitTests
     }
 
     [Test]
-    public void GetHashCode_ExpectHashCodeFromHashCombine()
+    public void GetHashCode_ExpectCombinedFromEqualityContract()
     {
         var source = Unit.Value;
         var actual = source.GetHashCode();
 
         var expected = HashCode.Combine(EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
         Assert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void GetHashCode_ExpectAreEqual()
+    {
+        var hashCode1 = default(Unit).GetHashCode();
+        var hashCode2 = Unit.Value.GetHashCode();
+
+        Assert.AreEqual(hashCode1, hashCode2);
     }
 }
