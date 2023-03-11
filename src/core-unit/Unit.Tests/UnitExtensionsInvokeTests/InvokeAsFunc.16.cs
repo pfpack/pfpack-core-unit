@@ -1,7 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
 using PrimeFuncPack.UnitTest;
-using PrimeFuncPack.UnitTest.Moq;
 using System;
 using static PrimeFuncPack.UnitTest.TestData;
 
