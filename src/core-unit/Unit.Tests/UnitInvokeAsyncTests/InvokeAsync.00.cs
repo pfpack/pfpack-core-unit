@@ -13,7 +13,7 @@ partial class UnitInvokeAsyncTests
         Func<Task> funcAsync = null!;
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = Unit.InvokeAsync(funcAsync));
 
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Test]
@@ -22,7 +22,7 @@ partial class UnitInvokeAsyncTests
         var mockFuncAsync = MockFuncFactory.CreateMockFunc(Task.CompletedTask);
         var actual = await Unit.InvokeAsync(mockFuncAsync.Object.Invoke);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(f => f.Invoke(), Times.Once);
     }
 }

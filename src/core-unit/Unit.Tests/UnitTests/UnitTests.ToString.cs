@@ -12,6 +12,6 @@ namespace PrimeFuncPack.Core.Tests;
             var actual = source.ToString();
 
             const string expected = "Unit:()";
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }

@@ -32,7 +32,7 @@ partial class UnitExtensionsInvokeAsyncTests
         var arg16 = long.MaxValue;
 
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Test]
@@ -60,7 +60,7 @@ partial class UnitExtensionsInvokeAsyncTests
 
         var actual = await funcAsync.InvokeAsFuncAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16), Times.Once);
     }
 }

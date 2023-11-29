@@ -31,7 +31,7 @@ partial class UnitInvokeTests
         var arg16 = long.MaxValue;
 
         var ex = Assert.Throws<ArgumentNullException>(() => _ = Unit.Invoke(action, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -58,7 +58,7 @@ partial class UnitInvokeTests
 
         var actual = Unit.Invoke(mockAction.Object.Invoke, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16), Times.Once);
     }
 }

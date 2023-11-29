@@ -25,7 +25,7 @@ partial class UnitExtensionsInvokeAsyncTests
         var arg8 = MinusSeventyFivePointSeven;
 
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeThenToUnitAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Obsolete]
@@ -46,7 +46,7 @@ partial class UnitExtensionsInvokeAsyncTests
 
         var actual = await funcAsync.InvokeThenToUnitAsync(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8), Times.Once);
     }
 }

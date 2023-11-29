@@ -8,25 +8,25 @@ partial class UnitTests
     [Test]
     public void Value_ExpectDefault()
         =>
-        Assert.AreEqual(default(Unit), Unit.Value);
+        Assert.That(Unit.Value, Is.EqualTo(default(Unit)));
 
     [Test]
     public void Get_ExpectDefault()
         =>
-        Assert.AreEqual(default(Unit), Unit.Get());
+        Assert.That(Unit.Get(), Is.EqualTo(default(Unit)));
 
     [Test]
     public void Get_ExpectValue()
         =>
-        Assert.AreEqual(Unit.Value, Unit.Get());
+        Assert.That(Unit.Get(), Is.EqualTo(Unit.Value));
 
     [Test]
     public void New_ExpectDefault()
         =>
-        Assert.AreEqual(default(Unit), new Unit());
+        Assert.That(new Unit(), Is.EqualTo(default(Unit)));
 
     [Test]
     public void New_ExpectValue()
         =>
-        Assert.AreEqual(Unit.Value, new Unit());
+        Assert.That(new Unit(), Is.EqualTo(Unit.Value));
 }

@@ -13,7 +13,7 @@ partial class UnitTests
         var other = default(Unit);
 
         var actual = Unit.Value.CompareTo(other);
-        Assert.Zero(actual);
+        Assert.That(actual, Is.Zero);
     }
 
     [Test]
@@ -22,7 +22,7 @@ partial class UnitTests
         object? obj = default(Unit);
 
         var actual = Unit.Value.CompareTo(obj);
-        Assert.Zero(actual);
+        Assert.That(actual, Is.Zero);
     }
 
     [Test]
@@ -32,8 +32,8 @@ partial class UnitTests
 
         var actual = Unit.Value.CompareTo(obj);
 
-        Assert.Positive(actual);
-        Assert.AreEqual(1, actual);
+        Assert.That(actual, Is.Positive);
+        Assert.That(actual, Is.EqualTo(1));
     }
 
     [Test]
@@ -42,10 +42,10 @@ partial class UnitTests
     {
         var ex = Assert.Throws<ArgumentException>(() => _ = Unit.Value.CompareTo(obj))!;
 
-        Assert.AreEqual("obj", ex.ParamName);
+        Assert.That(ex.ParamName, Is.EqualTo("obj"));
 
         var containsExpectedMessage = ex.Message.Contains("The object is not Unit.", StringComparison.Ordinal);
-        Assert.True(containsExpectedMessage);
+        Assert.That(containsExpectedMessage, Is.True);
     }
 
     [Test]
@@ -55,7 +55,7 @@ partial class UnitTests
         var right = default(Unit);
 
         var actual = Unit.Compare(left, right);
-        Assert.Zero(actual);
+        Assert.That(actual, Is.Zero);
     }
 
     [Test]
@@ -65,7 +65,7 @@ partial class UnitTests
         var right = default(Unit);
 
         var actual = left <= right;
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -75,7 +75,7 @@ partial class UnitTests
         var right = default(Unit);
 
         var actual = left >= right;
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -85,7 +85,7 @@ partial class UnitTests
         var right = default(Unit);
 
         var actual = left < right;
-        Assert.False(actual);
+        Assert.That(actual, Is.False);
     }
 
     [Test]
@@ -95,7 +95,7 @@ partial class UnitTests
         var right = default(Unit);
 
         var actual = left > right;
-        Assert.False(actual);
+        Assert.That(actual, Is.False);
     }
 
     private static IEnumerable<object> CompareTo_Obj_NotUnit_ExpectArgumentException_TestCases()

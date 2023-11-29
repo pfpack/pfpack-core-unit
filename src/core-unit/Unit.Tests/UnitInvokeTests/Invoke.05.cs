@@ -20,7 +20,7 @@ partial class UnitInvokeTests
         var arg5 = new { Value = PlusTwoHundredPointFive };
 
         var ex = Assert.Throws<ArgumentNullException>(() => _ = Unit.Invoke(action, arg1, arg2, arg3, arg4, arg5));
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -36,7 +36,7 @@ partial class UnitInvokeTests
 
         var actual = Unit.Invoke(mockAction.Object.Invoke, arg1, arg2, arg3, arg4, arg5);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5), Times.Once);
     }
 }
