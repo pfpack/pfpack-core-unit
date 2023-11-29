@@ -23,7 +23,7 @@ partial class UnitExtensionsInvokeTests
         var arg8 = MinusSeventyOnePointThree;
 
         var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -43,7 +43,7 @@ partial class UnitExtensionsInvokeTests
 
         var actual = action.InvokeAsFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8), Times.Once);
     }
 }

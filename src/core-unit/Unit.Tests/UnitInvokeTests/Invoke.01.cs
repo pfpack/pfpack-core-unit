@@ -16,7 +16,7 @@ partial class UnitInvokeTests
 
         var ex = Assert.Throws<ArgumentNullException>(() => _ = Unit.Invoke(action, arg));
 
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -30,7 +30,7 @@ partial class UnitInvokeTests
         var arg = isArgNull ? null : MinusFifteenIdRefType;
         var actual = Unit.Invoke(mockAction.Object.Invoke, arg);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(arg), Times.Once);
     }
 }

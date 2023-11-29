@@ -17,7 +17,7 @@ partial class UnitExtensionsInvokeTests
         var arg2 = PlusFifteenIdRefType;
 
         var ex = Assert.Throws<ArgumentNullException>(() => _ = action.InvokeAsFunc(arg1, arg2));
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -31,7 +31,7 @@ partial class UnitExtensionsInvokeTests
 
         var actual = action.InvokeAsFunc(arg1, arg2);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(arg1, arg2), Times.Once);
     }
 }

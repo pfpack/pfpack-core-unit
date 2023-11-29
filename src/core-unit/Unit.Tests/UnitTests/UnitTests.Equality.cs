@@ -14,7 +14,7 @@ partial class UnitTests
         var valueB = Unit.Value;
 
         var actual = Unit.Equals(valueA, valueB);
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -24,7 +24,7 @@ partial class UnitTests
         var valueB = Unit.Value;
 
         var actual = valueA == valueB;
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -34,7 +34,7 @@ partial class UnitTests
         var valueB = Unit.Value;
 
         var actual = valueA != valueB;
-        Assert.False(actual);
+        Assert.That(actual, Is.False);
     }
 
     [Test]
@@ -44,7 +44,7 @@ partial class UnitTests
         var other = Unit.Value;
 
         var actual = source.Equals(other);
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -54,7 +54,7 @@ partial class UnitTests
         object? obj = null;
 
         var actual = source.Equals(obj);
-        Assert.False(actual);
+        Assert.That(actual, Is.False);
     }
 
     [Test]
@@ -64,7 +64,7 @@ partial class UnitTests
         object? obj = SomeTextStructType;
 
         var actual = source.Equals(obj);
-        Assert.False(actual);
+        Assert.That(actual, Is.False);
     }
 
     [Test]
@@ -74,7 +74,7 @@ partial class UnitTests
         object? obj = default(Unit);
 
         var actual = source.Equals(obj);
-        Assert.True(actual);
+        Assert.That(actual, Is.True);
     }
 
     [Test]
@@ -84,7 +84,7 @@ partial class UnitTests
         var actual = source.GetHashCode();
 
         var expected = HashCode.Combine(EqualityComparer<Type>.Default.GetHashCode(typeof(Unit)));
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
@@ -93,6 +93,6 @@ partial class UnitTests
         var hashCode1 = default(Unit).GetHashCode();
         var hashCode2 = Unit.Value.GetHashCode();
 
-        Assert.AreEqual(hashCode1, hashCode2);
+        Assert.That(hashCode2, Is.EqualTo(hashCode1));
     }
 }

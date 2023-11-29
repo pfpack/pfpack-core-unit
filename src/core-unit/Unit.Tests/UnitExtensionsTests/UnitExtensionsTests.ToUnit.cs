@@ -16,6 +16,6 @@ partial class UnitExtensionsTests
         StructType? source = isSourceNull ? null : SomeTextStructType;
         var actual = source.ToUnit();
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
     }
 }

@@ -13,7 +13,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
         Func<ValueTask> funcAsync = null!;
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncValueAsync().AsTask());
 
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Test]
@@ -24,7 +24,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
 
         var actual = await funcAsync.InvokeAsFuncValueAsync();
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(f => f.Invoke(), Times.Once);
     }
 }

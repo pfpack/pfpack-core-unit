@@ -15,6 +15,6 @@ partial class UnitTests
         var result = isResultNull ? null : MinusFifteenIdRefType;
         var actual = Unit.From(result);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
     }
 }

@@ -19,7 +19,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg2 = PlusFifteenIdRefType;
 
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeThenToUnitValueAsync(arg1, arg2).AsTask());
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Obsolete]
@@ -34,7 +34,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
 
         var actual = await funcAsync.InvokeThenToUnitValueAsync(arg1, arg2);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(f => f.Invoke(arg1, arg2), Times.Once);
     }
 }

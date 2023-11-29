@@ -19,7 +19,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
         var arg3 = TabString;
 
         var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3).AsTask());
-        Assert.AreEqual("funcAsync", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
     [Test]
@@ -34,7 +34,7 @@ partial class UnitExtensionsInvoketValueAsyncTests
 
         var actual = await funcAsync.InvokeAsFuncValueAsync(arg1, arg2, arg3);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockFuncAsync.Verify(f => f.Invoke(arg1, arg2, arg3), Times.Once);
     }
 }

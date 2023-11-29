@@ -12,7 +12,7 @@ partial class UnitInvokeTests
         Action action = null!;
         var ex = Assert.Throws<ArgumentNullException>(() => _ = Unit.Invoke(action));
 
-        Assert.AreEqual("action", ex!.ParamName);
+        Assert.That(ex!.ParamName, Is.EqualTo("action"));
     }
 
     [Test]
@@ -21,7 +21,7 @@ partial class UnitInvokeTests
         var mockAction = MockActionFactory.CreateMockAction();
         var actual = Unit.Invoke(mockAction.Object.Invoke);
 
-        Assert.AreEqual(Unit.Value, actual);
+        Assert.That(actual, Is.EqualTo(Unit.Value));
         mockAction.Verify(a => a.Invoke(), Times.Once);
     }
 }
