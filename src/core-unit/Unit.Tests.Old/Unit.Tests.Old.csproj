@@ -12,7 +12,7 @@
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <Copyright>Copyright © 2020-2024 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack.Core.Tests</RootNamespace>
-    <AssemblyName>PrimeFuncPack.Core.Unit.Tests</AssemblyName>
+    <AssemblyName>PrimeFuncPack.Core.Unit.Tests.Old</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
