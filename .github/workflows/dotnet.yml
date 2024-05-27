@@ -22,8 +22,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
-            6.0.x
-            7.0.x
             8.0.x
 
     # Create Local NuGet Source
@@ -44,6 +42,12 @@ jobs:
 
     - name: Pack Unit
       run: dotnet pack ./src/*/*/Unit.csproj --no-restore -o ~/nuget  -c Release
+
+    - name: Restore Unit.Tests.Old
+      run: dotnet restore ./src/*/*/Unit.Tests.Old.csproj
+
+    - name: Test Unit.Tests.Old
+      run: dotnet test ./src/*/*/Unit.Tests.Old.csproj --no-restore  -c Release
 
     - name: Restore Unit.Tests
       run: dotnet restore ./src/*/*/Unit.Tests.csproj
