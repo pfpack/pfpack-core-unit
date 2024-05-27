@@ -1,5 +1,4 @@
 ﻿using Moq;
-using NUnit.Framework;
 using PrimeFuncPack.UnitTest;
 using System;
 using System.Threading.Tasks;
