@@ -31,7 +31,19 @@ public static partial class UnitSerializationTests
         =>
         new() { [ValueName] = null };
 
-    private static JsonObject BuildDtoWithArbitraryValueNode(JsonNode value)
+    private static JsonObject BuildDtoWithValueNode(JsonObject value)
+        =>
+        InnerBuildDtoWithValueNode(value);
+
+    private static JsonObject BuildDtoWithValueNode(JsonArray value)
+        =>
+        InnerBuildDtoWithValueNode(value);
+
+    private static JsonObject BuildDtoWithValueNode(JsonValue value)
+        =>
+        InnerBuildDtoWithValueNode(value);
+
+    private static JsonObject InnerBuildDtoWithValueNode(JsonNode value)
         =>
         new() { [ValueName] = value.DeepClone() };
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -9,7 +10,7 @@ partial class UnitSerializationTests
     [Theory]
     [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
     public static void DeserializeSimpleValueToUnitFromString_ExpectNoException(
-        JsonNode source,
+        JsonValue source,
         JsonSerializerOptions? options)
     {
         var sourceString = JsonSerializer.Serialize(source);
@@ -19,7 +20,7 @@ partial class UnitSerializationTests
     [Theory]
     [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
     public static void DeserializeSimpleValueToUnitFromObject_ExpectNoException(
-        JsonNode source,
+        JsonValue source,
         JsonSerializerOptions? options)
     {
         _ = JsonSerializer.Deserialize<Unit>(source, options);
@@ -28,47 +29,47 @@ partial class UnitSerializationTests
     [Theory]
     [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
     public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromString_ExpectNoException(
-        JsonNode source,
+        JsonValue source,
         JsonSerializerOptions? options)
     {
-        var sourceString = JsonSerializer.Serialize(BuildDtoWithArbitraryValueNode(source));
+        var sourceString = JsonSerializer.Serialize(BuildDtoWithValueNode(source));
         _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
     }
 
     [Theory]
     [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
     public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromObject_ExpectNoException(
-        JsonNode source,
+        JsonValue source,
         JsonSerializerOptions? options)
     {
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithArbitraryValueNode(source), options);
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
     }
 
-    public static TheoryData<JsonNode, JsonSerializerOptions?> DeserializeSimpleValueToUnit_ExpectNoException_Cases
+    public static TheoryData<JsonValue, JsonSerializerOptions?> DeserializeSimpleValueToUnit_ExpectNoException_Cases
     {
         get
         {
-            var values = new JsonNode[]
-            {
-                true,
-                false,
+            IEnumerable<JsonValue> values =
+            [
+                JsonValue.Create(true),
+                JsonValue.Create(false),
 
-                int.MinValue,
-                -1,
-                0,
-                1.1m,
-                1.2,
-                int.MaxValue,
+                JsonValue.Create(int.MinValue),
+                JsonValue.Create(-1),
+                JsonValue.Create(0),
+                JsonValue.Create(1.1m),
+                JsonValue.Create(1.2),
+                JsonValue.Create(int.MaxValue),
 
-                double.MinValue,
-                double.MaxValue,
+                JsonValue.Create(double.MinValue),
+                JsonValue.Create(double.MaxValue),
 
-                "",
-                "1",
-                "0AFB2897-BA58-4E10-A083-4C33341B6238"
-            };
+                JsonValue.Create(""),
+                JsonValue.Create("1"),
+                JsonValue.Create("0AFB2897-BA58-4E10-A083-4C33341B6238")
+            ];
 
-            var result = new TheoryData<JsonNode, JsonSerializerOptions?>();
+            var result = new TheoryData<JsonValue, JsonSerializerOptions?>();
 
             foreach (var value in values)
             {

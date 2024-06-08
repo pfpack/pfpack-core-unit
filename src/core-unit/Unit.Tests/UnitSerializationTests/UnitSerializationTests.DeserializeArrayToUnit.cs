@@ -31,7 +31,7 @@ partial class UnitSerializationTests
         JsonArray source,
         JsonSerializerOptions? options)
     {
-        var sourceString = JsonSerializer.Serialize(BuildDtoWithArbitraryValueNode(source));
+        var sourceString = JsonSerializer.Serialize(BuildDtoWithValueNode(source));
         _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
     }
 
@@ -41,7 +41,7 @@ partial class UnitSerializationTests
         JsonArray source,
         JsonSerializerOptions? options)
     {
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithArbitraryValueNode(source), options);
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
     }
 
     public static TheoryData<JsonArray, JsonSerializerOptions?> DeserializeArrayToUnit_ExpectNoException_Cases
