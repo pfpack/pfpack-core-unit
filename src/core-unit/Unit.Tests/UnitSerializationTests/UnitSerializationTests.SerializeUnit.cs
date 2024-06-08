@@ -23,4 +23,22 @@ partial class UnitSerializationTests
         var expected = new JsonObject();
         Assert.Equal(expected, actual);
     }
+
+    [Theory]
+    [MemberData(nameof(JsonSerializerOptionsCases))]
+    public static void SerializeDtoWithUnitToString_ExpectEmptyJsonObject(JsonSerializerOptions? options)
+    {
+        var actual = JsonSerializer.Serialize(new DtoWithUnit(), options);
+        var expected = JsonSerializer.Serialize(BuildDtoWithUnitValueNode()); // default options expected
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(JsonSerializerOptionsCases))]
+    public static void SerializeDtoWithUnitToNode_ExpectEmptyJsonObject(JsonSerializerOptions? options)
+    {
+        var actual = JsonSerializer.SerializeToNode(new DtoWithUnit(), options);
+        var expected = BuildDtoWithUnitValueNode();
+        Assert.Equal(expected, actual);
+    }
 }

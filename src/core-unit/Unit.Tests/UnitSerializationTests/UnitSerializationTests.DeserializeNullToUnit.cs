@@ -10,15 +10,29 @@ partial class UnitSerializationTests
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeNullToUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
-        var source = JsonSerializer.Serialize<JsonNode?>(null);
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        var sourceString = JsonSerializer.Serialize<JsonNode?>(null);
+        _ = JsonSerializer.Deserialize<Unit>(sourceString, options);
     }
 
     [Theory]
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeNullToUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
-        JsonNode? source = null;
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        _ = JsonSerializer.Deserialize<Unit>((JsonNode?)null, options);
+    }
+
+    [Theory]
+    [MemberData(nameof(JsonSerializerOptionsCases))]
+    public static void DeserializeDtoWithNullToDtoWithUnitFromString_ExpectNoException(JsonSerializerOptions? options)
+    {
+        var sourceString = JsonSerializer.Serialize<JsonNode?>(BuildDtoWithNullValueNode());
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
+    }
+
+    [Theory]
+    [MemberData(nameof(JsonSerializerOptionsCases))]
+    public static void DeserializeDtoWithNullToDtoWithUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
+    {
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithNullValueNode(), options);
     }
 }

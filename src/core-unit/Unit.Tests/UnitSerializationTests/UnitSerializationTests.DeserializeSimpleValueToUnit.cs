@@ -25,6 +25,25 @@ partial class UnitSerializationTests
         _ = JsonSerializer.Deserialize<Unit>(source, options);
     }
 
+    [Theory]
+    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromString_ExpectNoException(
+        JsonNode source,
+        JsonSerializerOptions? options)
+    {
+        var sourceString = JsonSerializer.Serialize(BuildDtoWithArbitraryValueNode(source));
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
+    }
+
+    [Theory]
+    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromObject_ExpectNoException(
+        JsonNode source,
+        JsonSerializerOptions? options)
+    {
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithArbitraryValueNode(source), options);
+    }
+
     public static TheoryData<JsonNode, JsonSerializerOptions?> DeserializeSimpleValueToUnit_ExpectNoException_Cases
     {
         get
