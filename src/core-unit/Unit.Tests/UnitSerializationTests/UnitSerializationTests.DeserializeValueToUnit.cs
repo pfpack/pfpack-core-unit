@@ -8,8 +8,8 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitSerializationTests
 {
     [Theory]
-    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
-    public static void DeserializeSimpleValueToUnitFromString_ExpectNoException(
+    [MemberData(nameof(DeserializeValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeValueToUnitFromString_ExpectNoException(
         JsonValue source,
         JsonSerializerOptions? options)
     {
@@ -18,8 +18,8 @@ partial class UnitSerializationTests
     }
 
     [Theory]
-    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
-    public static void DeserializeSimpleValueToUnitFromObject_ExpectNoException(
+    [MemberData(nameof(DeserializeValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeValueToUnitFromObject_ExpectNoException(
         JsonValue source,
         JsonSerializerOptions? options)
     {
@@ -27,8 +27,8 @@ partial class UnitSerializationTests
     }
 
     [Theory]
-    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
-    public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromString_ExpectNoException(
+    [MemberData(nameof(DeserializeValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithValueToDtoWithUnitFromString_ExpectNoException(
         JsonValue source,
         JsonSerializerOptions? options)
     {
@@ -37,15 +37,15 @@ partial class UnitSerializationTests
     }
 
     [Theory]
-    [MemberData(nameof(DeserializeSimpleValueToUnit_ExpectNoException_Cases))]
-    public static void DeserializeDtoWithSimpleValueToDtoWithUnitFromObject_ExpectNoException(
+    [MemberData(nameof(DeserializeValueToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithValueToDtoWithUnitFromObject_ExpectNoException(
         JsonValue source,
         JsonSerializerOptions? options)
     {
         _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
     }
 
-    public static TheoryData<JsonValue, JsonSerializerOptions?> DeserializeSimpleValueToUnit_ExpectNoException_Cases
+    public static TheoryData<JsonValue, JsonSerializerOptions?> DeserializeValueToUnit_ExpectNoException_Cases
     {
         get
         {
