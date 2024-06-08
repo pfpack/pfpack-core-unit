@@ -25,6 +25,25 @@ partial class UnitSerializationTests
         _ = JsonSerializer.Deserialize<Unit>(source, options);
     }
 
+    [Theory]
+    [MemberData(nameof(DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithNonEmptyObjectToDtoWithUnitFromString_ExpectNoException(
+        JsonObject source,
+        JsonSerializerOptions? options)
+    {
+        var sourceString = JsonSerializer.Serialize(BuildDtoWithValueNode(source));
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
+    }
+
+    [Theory]
+    [MemberData(nameof(DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases))]
+    public static void DeserializeDtoWithNonEmptyObjectToDtoWithUnitFromObject_ExpectNoException(
+        JsonObject source,
+        JsonSerializerOptions? options)
+    {
+        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
+    }
+
     public static TheoryData<JsonObject, JsonSerializerOptions?> DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases
     {
         get
@@ -58,7 +77,7 @@ partial class UnitSerializationTests
 
             foreach (var obj in objects)
             {
-                foreach (var options in BuildJsonSerializerOptionsCollection())
+                foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
                     result.Add(obj, options);
                 }
