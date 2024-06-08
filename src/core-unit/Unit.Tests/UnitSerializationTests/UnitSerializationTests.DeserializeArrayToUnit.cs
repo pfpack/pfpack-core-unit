@@ -58,7 +58,7 @@ partial class UnitSerializationTests
 
             foreach (var array in arrays)
             {
-                foreach (var options in BuildJsonSerializerOptionsCollection())
+                foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
                     result.Add(array, options);
                 }

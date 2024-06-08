@@ -13,9 +13,9 @@ public static partial class UnitSerializationTests
 
     public static TheoryData<JsonSerializerOptions?> JsonSerializerOptionsCases
         =>
-        new(BuildJsonSerializerOptionsCollection().ToArray());
+        new(EnumerateJsonSerializerOptionsCases().ToArray());
 
-    private static IEnumerable<JsonSerializerOptions?> BuildJsonSerializerOptionsCollection()
+    private static IEnumerable<JsonSerializerOptions?> EnumerateJsonSerializerOptionsCases()
     {
         yield return null;
         yield return JsonSerializerOptions.Default;
