@@ -9,21 +9,16 @@ internal sealed class UnitJsonConverter : JsonConverter<Unit>
     {
         switch (reader.TokenType)
         {
-            case JsonTokenType.StartObject:
-            case JsonTokenType.StartArray:
+            case JsonTokenType.StartObject or JsonTokenType.StartArray:
                 reader.Skip();
                 return default;
 
-            case JsonTokenType.String:
-            case JsonTokenType.Number:
-            case JsonTokenType.True:
-            case JsonTokenType.False:
-            case JsonTokenType.Null:
+            case JsonTokenType.String or JsonTokenType.Number or JsonTokenType.True or JsonTokenType.False or JsonTokenType.Null:
                 return default;
 
             case var unexpected:
                 throw new JsonException($"An unexpected JSON token type ({unexpected}).");
-        };
+        }
     }
 
     public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
