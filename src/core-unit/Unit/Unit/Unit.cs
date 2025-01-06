@@ -3,6 +3,6 @@
 namespace System;
 
 [JsonConverter(typeof(UnitJsonConverter))]
-public readonly partial struct Unit : IEquatable<Unit>, IComparable<Unit>, IComparable
+public readonly partial struct Unit : IEquatable<Unit>, IComparable<Unit>
 {
 }
