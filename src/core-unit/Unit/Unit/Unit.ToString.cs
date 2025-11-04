@@ -4,5 +4,5 @@ partial struct Unit
 {
     public override string ToString()
         =>
-        "Unit:()";
+        InnerFormat(default);
 }
