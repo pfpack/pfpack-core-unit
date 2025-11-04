@@ -23,7 +23,7 @@ jobs:
       with:
         dotnet-version: |
           10.0.x
-          dotnet-quality: 'preview'
+        dotnet-quality: 'preview'
 
     # Create Local NuGet Source
 
