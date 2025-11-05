@@ -5,7 +5,7 @@ namespace System;
 internal static class UnitFormatter
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static string ToString(ReadOnlySpan<char> format)
+    internal static string Format(ReadOnlySpan<char> format)
         =>
         format switch
         {

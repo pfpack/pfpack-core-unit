@@ -8,13 +8,13 @@ partial struct Unit
 
 	public string ToString(string? format, IFormatProvider? formatProvider)
 		=>
-		UnitFormatter.ToString(format);
+		UnitFormatter.Format(format);
 
 	// ISpanFormattable
 
 	public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
-		var formatted = UnitFormatter.ToString(format);
+		var formatted = UnitFormatter.Format(format);
 
 		if (formatted.TryCopyTo(destination))
 		{
@@ -30,7 +30,7 @@ partial struct Unit
 
 	public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
-		ReadOnlySpan<byte> utf8Formatted = new(Encoding.UTF8.GetBytes(UnitFormatter.ToString(format)));
+		ReadOnlySpan<byte> utf8Formatted = new(Encoding.UTF8.GetBytes(UnitFormatter.Format(format)));
 
 		if (utf8Formatted.TryCopyTo(utf8Destination))
 		{
