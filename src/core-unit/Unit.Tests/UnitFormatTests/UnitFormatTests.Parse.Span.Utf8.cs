@@ -8,23 +8,33 @@ partial class UnitFormatTests
 	[Theory]
 	[MemberData(nameof(ParseCases))]
 	public static void ParseSpanUtf8_Succeeds(string? s)
-	{
-		var bytes = s is not null ? Encoding.UTF8.GetBytes(s) : null;
-		var actual = Unit.Parse(bytes.AsSpan(), null);
-
-		var expected = default(Unit);
-
-		Assert.StrictEqual(expected, actual);
-	}
+		=>
+		Inner_ParseSpanUtf8_Succeeds<Unit>(s);
 
 	[Theory]
 	[MemberData(nameof(ParseCases))]
 	public static void TryParseSpanUtf8_Succeeds(string? s)
-	{
-		var bytes = s is not null ? Encoding.UTF8.GetBytes(s) : null;
-		var actual = Unit.TryParse(bytes.AsSpan(), null, out var result);
+		=>
+		Inner_TryParseSpanUtf8_Succeeds<Unit>(s);
 
-		var expected = default(Unit);
+	private static void Inner_ParseSpanUtf8_Succeeds<TUnit>(string? s)
+		where TUnit : struct, IUtf8SpanParsable<TUnit>
+	{
+		ReadOnlySpan<byte> span = s is null ? null : Encoding.UTF8.GetBytes(s);
+		var actual = TUnit.Parse(span, null);
+
+		var expected = default(TUnit);
+
+		Assert.StrictEqual(expected, actual);
+	}
+
+	private static void Inner_TryParseSpanUtf8_Succeeds<TUnit>(string? s)
+		where TUnit : struct, IUtf8SpanParsable<TUnit>
+	{
+		ReadOnlySpan<byte> span = s is null ? null : Encoding.UTF8.GetBytes(s);
+		var actual = TUnit.TryParse(span, null, out var result);
+
+		var expected = default(TUnit);
 
 		Assert.True(actual);
 		Assert.StrictEqual(expected, result);

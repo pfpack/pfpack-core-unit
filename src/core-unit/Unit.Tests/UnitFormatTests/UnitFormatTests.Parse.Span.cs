@@ -7,21 +7,33 @@ partial class UnitFormatTests
 	[Theory]
 	[MemberData(nameof(ParseCases))]
 	public static void ParseSpan_Succeeds(string? s)
-	{
-		var actual = Unit.Parse(s.AsSpan(), null);
-
-		var expected = default(Unit);
-
-		Assert.StrictEqual(expected, actual);
-	}
+		=>
+		Inner_ParseSpan_Succeeds<Unit>(s);
 
 	[Theory]
 	[MemberData(nameof(ParseCases))]
 	public static void TryParseSpan_Succeeds(string? s)
-	{
-		var actual = Unit.TryParse(s.AsSpan(), null, out var result);
+		=>
+		Inner_TryParseSpan_Succeeds<Unit>(s);
 
-		var expected = default(Unit);
+	private static void Inner_ParseSpan_Succeeds<TUnit>(string? s)
+		where TUnit : struct, ISpanParsable<TUnit>
+	{
+		ReadOnlySpan<char> span = s;
+		var actual = TUnit.Parse(span, null);
+
+		var expected = default(TUnit);
+
+		Assert.StrictEqual(expected, actual);
+	}
+
+	private static void Inner_TryParseSpan_Succeeds<TUnit>(string? s)
+		where TUnit : struct, ISpanParsable<TUnit>
+	{
+		ReadOnlySpan<char> span = s;
+		var actual = TUnit.TryParse(span, null, out var result);
+
+		var expected = default(TUnit);
 
 		Assert.True(actual);
 		Assert.StrictEqual(expected, result);
