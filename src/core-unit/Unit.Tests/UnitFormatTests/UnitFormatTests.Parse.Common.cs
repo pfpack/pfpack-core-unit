@@ -8,15 +8,15 @@ partial class UnitFormatTests
 		=>
 		new([.. EnumerateParseCases()]);
 
-	public static TheoryData<string> ParseCasesWithoutNull
+	public static TheoryData<string> NotNullParseCases
 		=>
-		new([.. EnumerateParseCasesWithoutNull()]);
+		new([.. EnumerateNotNullParseCases()]);
 
 	private static IEnumerable<string?> EnumerateParseCases()
 		=>
-		[null, .. EnumerateParseCasesWithoutNull()];
+		[null, .. EnumerateNotNullParseCases()];
 
-	private static IEnumerable<string> EnumerateParseCasesWithoutNull()
+	private static IEnumerable<string> EnumerateNotNullParseCases()
 		=>
 		[
 			"()",

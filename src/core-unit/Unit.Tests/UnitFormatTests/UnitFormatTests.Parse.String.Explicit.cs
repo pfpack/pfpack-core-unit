@@ -5,13 +5,13 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitFormatTests
 {
 	[Theory]
-	[MemberData(nameof(ParseCasesWithoutNull))]
+	[MemberData(nameof(NotNullParseCases))]
 	public static void ParseStringExplicit_Succeeds(string s)
 		=>
 		Inner_ParseStringExplicit_Succeeds<Unit>(s);
 
 	[Theory]
-	[MemberData(nameof(ParseCasesWithoutNull))]
+	[MemberData(nameof(NotNullParseCases))]
 	public static void TryParseStringExplicit_Succeeds(string s)
 		=>
 		Inner_TryParseStringExplicit_Succeeds<Unit>(s);
