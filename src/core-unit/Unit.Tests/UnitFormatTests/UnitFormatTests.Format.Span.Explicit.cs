@@ -6,13 +6,14 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpan_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanExplicit_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
 	{
 		var (format, expected) = (testCase.Format, testCase.Expected.ToCharArray());
 
 		var destination = new char[expected.Length];
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (ISpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.True(actualResult);
 		Assert.Equal(expected.Length, actualCharsWritten);
@@ -21,7 +22,7 @@ partial class UnitFormatTests
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpan_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanExplicit_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
 	{
 		var (format, expected) = (testCase.Format, testCase.Expected.ToCharArray());
 
@@ -31,7 +32,8 @@ partial class UnitFormatTests
 		var destination = new char[expected.Length + extraLength];
 		destination.AsSpan(start: expected.Length).Fill(filler);
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (ISpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.True(actualResult);
 		Assert.Equal(expected.Length, actualCharsWritten);
@@ -44,7 +46,7 @@ partial class UnitFormatTests
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpan_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanExplicit_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
 	{
 		var (format, expectedLength) = (testCase.Format, testCase.Expected.Length);
 
@@ -60,7 +62,8 @@ partial class UnitFormatTests
 		var destination = new char[expectedLength - 1];
 		destination.AsSpan().Fill(filler);
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (ISpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.False(actualResult);
 		Assert.Equal(0, actualCharsWritten);

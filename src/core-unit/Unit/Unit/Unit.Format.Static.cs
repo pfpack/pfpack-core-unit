@@ -4,15 +4,11 @@ namespace System;
 
 partial struct Unit
 {
-	// IFormattable
-
-	public string ToString(string? format, IFormatProvider? formatProvider)
+	public static string Format(ReadOnlySpan<char> format)
 		=>
 		UnitFormatter.Format(format);
 
-	// ISpanFormattable
-
-	public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+	public static bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
 	{
 		var formatted = UnitFormatter.Format(format);
 
@@ -22,9 +18,7 @@ partial struct Unit
 		return result;
 	}
 
-	// IUtf8SpanFormattable
-
-	public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+	public static bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
 	{
 		ReadOnlySpan<byte> utf8Formatted = new(Encoding.UTF8.GetBytes(UnitFormatter.Format(format)));
 

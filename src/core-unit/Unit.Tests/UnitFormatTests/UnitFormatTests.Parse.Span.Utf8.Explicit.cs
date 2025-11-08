@@ -7,17 +7,17 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ParseCases))]
-	public static void ParseSpanUtf8_Succeeds(string? s)
+	public static void ParseSpanUtf8Explicit_Succeeds(string? s)
 		=>
-		Inner_ParseSpanUtf8_Succeeds<Unit>(s);
+		Inner_ParseSpanUtf8Explicit_Succeeds<Unit>(s);
 
 	[Theory]
 	[MemberData(nameof(ParseCases))]
-	public static void TryParseSpanUtf8_Succeeds(string? s)
+	public static void TryParseSpanUtf8Explicit_Succeeds(string? s)
 		=>
-		Inner_TryParseSpanUtf8_Succeeds<Unit>(s);
+		Inner_TryParseSpanUtf8Explicit_Succeeds<Unit>(s);
 
-	private static void Inner_ParseSpanUtf8_Succeeds<TUnit>(string? s)
+	private static void Inner_ParseSpanUtf8Explicit_Succeeds<TUnit>(string? s)
 		where TUnit : struct, IUtf8SpanParsable<TUnit>
 	{
 		ReadOnlySpan<byte> span = s is null ? null : Encoding.UTF8.GetBytes(s);
@@ -28,7 +28,7 @@ partial class UnitFormatTests
 		Assert.StrictEqual(expected, actual);
 	}
 
-	private static void Inner_TryParseSpanUtf8_Succeeds<TUnit>(string? s)
+	private static void Inner_TryParseSpanUtf8Explicit_Succeeds<TUnit>(string? s)
 		where TUnit : struct, IUtf8SpanParsable<TUnit>
 	{
 		ReadOnlySpan<byte> span = s is null ? null : Encoding.UTF8.GetBytes(s);

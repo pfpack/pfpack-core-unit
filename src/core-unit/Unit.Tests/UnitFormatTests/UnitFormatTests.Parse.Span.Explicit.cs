@@ -6,17 +6,17 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ParseCases))]
-	public static void ParseSpan_Succeeds(string? s)
+	public static void ParseSpanExplicit_Succeeds(string? s)
 		=>
-		Inner_ParseSpan_Succeeds<Unit>(s);
+		Inner_ParseSpanExplicit_Succeeds<Unit>(s);
 
 	[Theory]
 	[MemberData(nameof(ParseCases))]
-	public static void TryParseSpan_Succeeds(string? s)
+	public static void TryParseSpanExplicit_Succeeds(string? s)
 		=>
-		Inner_TryParseSpan_Succeeds<Unit>(s);
+		Inner_TryParseSpanExplicit_Succeeds<Unit>(s);
 
-	private static void Inner_ParseSpan_Succeeds<TUnit>(string? s)
+	private static void Inner_ParseSpanExplicit_Succeeds<TUnit>(string? s)
 		where TUnit : struct, ISpanParsable<TUnit>
 	{
 		ReadOnlySpan<char> span = s;
@@ -27,7 +27,7 @@ partial class UnitFormatTests
 		Assert.StrictEqual(expected, actual);
 	}
 
-	private static void Inner_TryParseSpan_Succeeds<TUnit>(string? s)
+	private static void Inner_TryParseSpanExplicit_Succeeds<TUnit>(string? s)
 		where TUnit : struct, ISpanParsable<TUnit>
 	{
 		ReadOnlySpan<char> span = s;

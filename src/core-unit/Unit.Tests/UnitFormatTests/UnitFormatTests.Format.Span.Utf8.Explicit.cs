@@ -7,13 +7,14 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8Explicit_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
 	{
 		var (format, expected) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected));
 
 		var destination = new byte[expected.Length];
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (IUtf8SpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.True(actualResult);
 		Assert.Equal(expected.Length, actualCharsWritten);
@@ -22,7 +23,7 @@ partial class UnitFormatTests
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8Explicit_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
 	{
 		var (format, expected) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected));
 
@@ -32,7 +33,8 @@ partial class UnitFormatTests
 		var destination = new byte[expected.Length + extraLength];
 		destination.AsSpan(start: expected.Length).Fill(filler);
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (IUtf8SpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.True(actualResult);
 		Assert.Equal(expected.Length, actualCharsWritten);
@@ -45,7 +47,7 @@ partial class UnitFormatTests
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8Explicit_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
 	{
 		var (format, expectedLength) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected).Length);
 
@@ -61,7 +63,8 @@ partial class UnitFormatTests
 		var destination = new byte[expectedLength - 1];
 		destination.AsSpan().Fill(filler);
 
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
+		var source = (IUtf8SpanFormattable)default(Unit);
+		var actualResult = source.TryFormat(destination, out var actualCharsWritten, format, null);
 
 		Assert.False(actualResult);
 		Assert.Equal(0, actualCharsWritten);
