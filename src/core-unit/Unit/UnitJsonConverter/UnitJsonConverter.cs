@@ -31,7 +31,9 @@ internal sealed class UnitJsonConverter : JsonConverter<Unit>
             throw new JsonException($"An unexpected JSON token type ({unexpected}).")
         };
 
-    public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
+	// We serialize Unit into an empty JSON object.
+
+	public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
     {
         writer.WriteStartObject();
         writer.WriteEndObject();
