@@ -1,14 +1,16 @@
-﻿using System.Text;
+﻿#pragma warning disable CA1822 // Mark members as static
+
+using System.Text;
 
 namespace System;
 
 partial struct Unit
 {
-	public static string Format(ReadOnlySpan<char> format)
-		=>
+    public string Format(ReadOnlySpan<char> format)
+        =>
 		UnitFormatter.Format(format);
 
-	public static bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
+	public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
 	{
 		var formatted = UnitFormatter.Format(format);
 
@@ -18,7 +20,7 @@ partial struct Unit
 		return result;
 	}
 
-	public static bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
+	public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
 	{
 		ReadOnlySpan<byte> utf8Formatted = new(Encoding.UTF8.GetBytes(UnitFormatter.Format(format)));
 

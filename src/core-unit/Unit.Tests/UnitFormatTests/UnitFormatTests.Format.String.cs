@@ -9,7 +9,8 @@ partial class UnitFormatTests
 	[MemberData(nameof(ExpectedFormatCases))]
 	public static void FormatToString_ExpectCorrespondingResult(string? format, string expected)
 	{
-		var actual = Unit.Format(format);
+		var source = default(Unit);
+		var actual = source.Format(format);
 
 		Assert.Equal(expected, actual);
 	}
