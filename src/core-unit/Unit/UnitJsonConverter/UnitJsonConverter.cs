@@ -6,7 +6,10 @@ namespace System;
 
 internal sealed class UnitJsonConverter : JsonConverter<Unit>
 {
-    public override Unit Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+	// We maintain that Unit can be derived from any input value
+    // represented in any applicable JSON token.
+
+	public override Unit Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         =>
         reader.TokenType switch
         {

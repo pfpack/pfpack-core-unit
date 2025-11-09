@@ -6,6 +6,8 @@ namespace System;
 
 partial struct Unit
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+	// We maintain that Unit can be derived from any input value.
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Unit From<TResult>(TResult result) => default;
 }
