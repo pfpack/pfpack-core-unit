@@ -24,7 +24,7 @@ partial class UnitFormatTests
 			expected);
 
 	[Theory]
-	[MemberData(nameof(ExpectedFormatCases))]
+	[MemberData(nameof(ExpectedFormatCases_WithoutEmptyResult))]
 	public static void FormatToSpan_DestLengthIsLess_ExpectFailureResult(string? format, string expected)
 		=>
 		Inner_FormatToSpan_DestLengthIsLess_ExpectFailureResult(

@@ -53,13 +53,6 @@ partial class UnitFormatTests
 	{
 		var expectedLength = Encoding.UTF8.GetBytes(expectedString).Length;
 
-		if (expectedLength == 0)
-		{
-			// Skip inapplicable case
-			Assert.False(false);
-			return;
-		}
-
 		const byte filler = byte.MaxValue;
 
 		var destination = new byte[expectedLength - 1].AsSpan();

@@ -8,6 +8,21 @@ partial class UnitFormatTests
 	public static IEnumerable<TheoryDataRow<string?, string>> ExpectedFormatCases
 		=>
 		[
+			// Empty format
+			("E", UnitForms.Empty),
+			("e", UnitForms.Empty),
+			..
+			EnumerateExpectedFormatCases_WithoutEmptyResult(),
+		];
+
+	public static IEnumerable<TheoryDataRow<string?, string>> ExpectedFormatCases_WithoutEmptyResult
+		=>
+		[.. EnumerateExpectedFormatCases_WithoutEmptyResult()];
+
+
+	private static IEnumerable<(string?, string)> EnumerateExpectedFormatCases_WithoutEmptyResult()
+		=>
+		[
 			// Default format
 			(null, UnitForms.General),
 			("", UnitForms.General),
@@ -24,9 +39,7 @@ partial class UnitFormatTests
 			("J", UnitForms.JsonObj),
 			("j", UnitForms.JsonObj),
 
-			// Empty format
-			("E", UnitForms.Empty),
-			("e", UnitForms.Empty),
+			// Empty format - miss here on purpose
 
 			// Canonical entended
 			("UX", UnitForms.CanonicalExtended),

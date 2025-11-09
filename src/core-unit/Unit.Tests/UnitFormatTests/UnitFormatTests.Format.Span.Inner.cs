@@ -45,13 +45,6 @@ partial class UnitFormatTests
 		Func<Span<char>, ReadOnlySpan<char>, (bool Result, int CharsWritten)> testFunc,
 		string? format, string expected)
 	{
-		if (expected.Length == 0)
-		{
-			// Skip inapplicable case
-			Assert.False(false);
-			return;
-		}
-
 		const char filler = 'X';
 
 		var destination = new char[expected.Length - 1].AsSpan();
