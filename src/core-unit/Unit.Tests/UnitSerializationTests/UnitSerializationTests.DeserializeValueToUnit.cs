@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -45,41 +46,42 @@ partial class UnitSerializationTests
         _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
     }
 
-    public static TheoryData<JsonValue, JsonSerializerOptions?> DeserializeValueToUnit_ExpectNoException_Cases
+    public static IEnumerable<TheoryDataRow<JsonValue, JsonSerializerOptions?>> DeserializeValueToUnit_ExpectNoException_Cases
     {
         get
         {
-            var result = new TheoryData<JsonValue, JsonSerializerOptions?>();
+            var result = new List<TheoryDataRow<JsonValue, JsonSerializerOptions?>>();
 
             foreach (var value in EnumerateValues())
             {
                 foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
-                    result.Add(value, options);
+                    result.Add((value, options));
                 }
             }
 
             return result;
 
             static IEnumerable<JsonValue> EnumerateValues()
-            {
-                yield return JsonValue.Create(true);
-                yield return JsonValue.Create(false);
+                =>
+                [
+                     JsonValue.Create(true),
+                     JsonValue.Create(false),
 
-                yield return JsonValue.Create(int.MinValue);
-                yield return JsonValue.Create(-1);
-                yield return JsonValue.Create(0);
-                yield return JsonValue.Create(1.1m);
-                yield return JsonValue.Create(1.2);
-                yield return JsonValue.Create(int.MaxValue);
+                     JsonValue.Create(int.MinValue),
+                     JsonValue.Create(-1),
+                     JsonValue.Create(0),
+                     JsonValue.Create(1.1m),
+                     JsonValue.Create(1.2),
+                     JsonValue.Create(int.MaxValue),
 
-                yield return JsonValue.Create(double.MinValue);
-                yield return JsonValue.Create(double.MaxValue);
+                     JsonValue.Create(double.MinValue),
+                     JsonValue.Create(double.MaxValue),
 
-                yield return JsonValue.Create("");
-                yield return JsonValue.Create("1");
-                yield return JsonValue.Create("0AFB2897-BA58-4E10-A083-4C33341B6238");
-            }
+                     JsonValue.Create(""),
+                     JsonValue.Create("1"),
+                     JsonValue.Create("0AFB2897-BA58-4E10-A083-4C33341B6238"),
+                ];
         }
     }
 }

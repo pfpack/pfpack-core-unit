@@ -1,4 +1,5 @@
 ﻿using System;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -6,11 +7,11 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToStringExplicit_ExpectCorrespondingResult((string? Format, string Expected) testCase)
+	public static void FormatToStringExplicit_ExpectCorrespondingResult(string? format, string expected)
 	{
 		var source = (IFormattable)default(Unit);
-		var actual = source.ToString(testCase.Format, null);
+		var actual = source.ToString(format, null);
 
-		Assert.Equal(testCase.Expected, actual);
+		Assert.Equal(expected, actual);
 	}
 }

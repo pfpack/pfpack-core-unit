@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Text;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
 partial class UnitFormatTests
 {
-	internal static void Inner_FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult(
+	private static void Inner_FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult(
 		Func<Span<byte>, ReadOnlySpan<char>, (bool Result, int BytesWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format,
+		string expectedString)
 	{
-		var format = testCase.Format;
-		var expected = Encoding.UTF8.GetBytes(testCase.Expected);
+		var expected = Encoding.UTF8.GetBytes(expectedString);
 
 		var destination = new byte[expected.Length].AsSpan();
 
@@ -21,12 +22,12 @@ partial class UnitFormatTests
 		Assert.Equal(expected, destination);
 	}
 
-	internal static void Inner_FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult(
+	private static void Inner_FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult(
 		Func<Span<byte>, ReadOnlySpan<char>, (bool Result, int BytesWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format,
+		string expectedString)
 	{
-		var format = testCase.Format;
-		var expected = Encoding.UTF8.GetBytes(testCase.Expected);
+		var expected = Encoding.UTF8.GetBytes(expectedString);
 
 		const int extraLength = 1;
 		const byte filler = byte.MaxValue;
@@ -45,12 +46,12 @@ partial class UnitFormatTests
 		Assert.Equal(expectedExtra, destination[expected.Length..]);
 	}
 
-	internal static void Inner_FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult(
+	private static void Inner_FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult(
 		Func<Span<byte>, ReadOnlySpan<char>, (bool Result, int BytesWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format,
+		string expectedString)
 	{
-		var format = testCase.Format;
-		var expectedLength = Encoding.UTF8.GetBytes(testCase.Expected).Length;
+		var expectedLength = Encoding.UTF8.GetBytes(expectedString).Length;
 
 		if (expectedLength == 0)
 		{

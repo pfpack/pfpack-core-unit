@@ -1,4 +1,5 @@
 ﻿using System;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -6,27 +7,30 @@ partial class UnitFormatTests
 {
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult(string? format, string expected)
 		=>
 		Inner_FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult(
 			InnerFormatToSpanUtf8,
-			testCase);
+			format,
+			expected);
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult(string? format, string expected)
 		=>
 		Inner_FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult(
 			InnerFormatToSpanUtf8,
-			testCase);
+			format,
+			expected);
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
-	public static void FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
+	public static void FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult(string? format, string expected)
 		=>
 		Inner_FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult(
 			InnerFormatToSpanUtf8,
-			testCase);
+			format,
+			expected);
 
 	private static (bool Result, int BytesWritten) InnerFormatToSpanUtf8(Span<byte> destination, ReadOnlySpan<char> format)
 	{

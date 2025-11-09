@@ -1,4 +1,5 @@
 ﻿using System;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -6,11 +7,9 @@ partial class UnitFormatTests
 {
 	private static void Inner_FormatToSpan_DestLengthIsEqual_ExpectSuccessResult(
 		Func<Span<char>, ReadOnlySpan<char>, (bool Result, int CharsWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format,
+		string expected)
 	{
-		var format = testCase.Format;
-		var expected = testCase.Expected.AsSpan();
-
 		var destination = new char[expected.Length].AsSpan();
 
 		var (actualResult, actualCharsWritten) = testFunc.Invoke(destination, format);
@@ -22,11 +21,9 @@ partial class UnitFormatTests
 
 	private static void Inner_FormatToSpan_DestLengthIsGreater_ExpectSuccessResult(
 		Func<Span<char>, ReadOnlySpan<char>, (bool Result, int CharsWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format,
+		string expected)
 	{
-		var format = testCase.Format;
-		var expected = testCase.Expected.AsSpan();
-
 		const int extraLength = 1;
 		const char filler = 'X';
 
@@ -46,11 +43,9 @@ partial class UnitFormatTests
 
 	private static void Inner_FormatToSpan_DestLengthIsLess_ExpectFailureResult(
 		Func<Span<char>, ReadOnlySpan<char>, (bool Result, int CharsWritten)> testFunc,
-		(string? Format, string Expected) testCase)
+		string? format, string expected)
 	{
-		var (format, expectedLength) = (testCase.Format, testCase.Expected.Length);
-
-		if (expectedLength == 0)
+		if (expected.Length == 0)
 		{
 			// Skip inapplicable case
 			Assert.False(false);
@@ -59,7 +54,7 @@ partial class UnitFormatTests
 
 		const char filler = 'X';
 
-		var destination = new char[expectedLength - 1].AsSpan();
+		var destination = new char[expected.Length - 1].AsSpan();
 		destination.Fill(filler);
 
 		var (actualResult, actualCharsWritten) = testFunc.Invoke(destination, format);

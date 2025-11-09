@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -10,17 +11,18 @@ public static partial class UnitSerializationTests
 {
     private const string ValueName = "value";
 
-    public static TheoryData<JsonSerializerOptions?> JsonSerializerOptionsCases
+    public static IEnumerable<TheoryDataRow<JsonSerializerOptions?>> JsonSerializerOptionsCases
         =>
         [.. EnumerateJsonSerializerOptionsCases()];
 
     private static IEnumerable<JsonSerializerOptions?> EnumerateJsonSerializerOptionsCases()
-    {
-        yield return null;
-        yield return JsonSerializerOptions.Default;
-        yield return new(JsonSerializerDefaults.General);
-        yield return new(JsonSerializerDefaults.Web);
-    }
+        =>
+        [
+            null,
+            JsonSerializerOptions.Default,
+            new(JsonSerializerDefaults.General),
+            new(JsonSerializerDefaults.Web),
+        ];
 
     private static JsonObject BuildDtoWithUnitValueNode()
         =>

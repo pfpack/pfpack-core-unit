@@ -1,20 +1,17 @@
 ﻿using System.Collections.Generic;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
 partial class UnitFormatTests
 {
-	public static TheoryData<string?> ParseCases
+	public static IEnumerable<TheoryDataRow<string?>> ParseCases
 		=>
-		new([.. EnumerateParseCases()]);
+		[(string?)null, .. EnumerateNotNullParseCases()];
 
-	public static TheoryData<string> NotNullParseCases
+	public static IEnumerable<TheoryDataRow<string>> NotNullParseCases
 		=>
-		new([.. EnumerateNotNullParseCases()]);
-
-	private static IEnumerable<string?> EnumerateParseCases()
-		=>
-		[null, .. EnumerateNotNullParseCases()];
+		[.. EnumerateNotNullParseCases()];
 
 	private static IEnumerable<string> EnumerateNotNullParseCases()
 		=>

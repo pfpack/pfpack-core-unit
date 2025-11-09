@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
 partial class UnitFormatTests
 {
-
-	public static TheoryData<(string? Format, string Expected)> ExpectedFormatCases
-		=>
-		new([.. EnumerateExpectedFormatCases()]);
-
-	private static IEnumerable<(string? Format, string Expected)> EnumerateExpectedFormatCases()
+	public static IEnumerable<TheoryDataRow<string?, string>> ExpectedFormatCases
 		=>
 		[
 			// Default format
