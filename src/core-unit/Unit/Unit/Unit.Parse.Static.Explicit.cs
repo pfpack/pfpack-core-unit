@@ -2,7 +2,7 @@
 
 partial struct Unit
 {
-	// Notes regarding the string versions of parsing:
+	// Notes on the string versions of parsing, Parse(string)/TryParse(string?):
 	//
 	// - For the explicit implementation we follow the contract which defines
 	// fail for the null input, since TryParse method has [NotNullWhen(true)]
