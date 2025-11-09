@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -8,66 +7,30 @@ partial class UnitFormatTests
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
 	public static void FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult((string? Format, string Expected) testCase)
-	{
-		var (format, expected) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected));
-
-		var destination = new byte[expected.Length];
-
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
-
-		Assert.True(actualResult);
-		Assert.Equal(expected.Length, actualCharsWritten);
-		Assert.Equal(expected, destination);
-	}
+		=>
+		Inner_FormatToSpanUtf8_DestLengthIsEqual_ExpectSuccessResult(
+			InnerFormatToSpanUtf8,
+			testCase);
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
 	public static void FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult((string? Format, string Expected) testCase)
-	{
-		var (format, expected) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected));
-
-		const int extraLength = 1;
-		const byte filler = byte.MaxValue;
-
-		var destination = new byte[expected.Length + extraLength];
-		destination.AsSpan(start: expected.Length).Fill(filler);
-
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
-
-		Assert.True(actualResult);
-		Assert.Equal(expected.Length, actualCharsWritten);
-		Assert.Equal(expected, destination[..expected.Length]);
-
-		var expectedExtra = new byte[extraLength];
-		expectedExtra.AsSpan().Fill(filler);
-		Assert.Equal(expectedExtra, destination[expected.Length..]);
-	}
+		=>
+		Inner_FormatToSpanUtf8_DestLengthIsGreater_ExpectSuccessResult(
+			InnerFormatToSpanUtf8,
+			testCase);
 
 	[Theory]
 	[MemberData(nameof(ExpectedFormatCases))]
 	public static void FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult((string? Format, string Expected) testCase)
+		=>
+		Inner_FormatToSpanUtf8_DestLengthIsLess_ExpectFailureResult(
+			InnerFormatToSpanUtf8,
+			testCase);
+
+	private static (bool Result, int BytesWritten) InnerFormatToSpanUtf8(Span<byte> destination, ReadOnlySpan<char> format)
 	{
-		var (format, expectedLength) = (testCase.Format, Encoding.UTF8.GetBytes(testCase.Expected).Length);
-
-		if (expectedLength == 0)
-		{
-			// Skip inapplicable case
-			Assert.False(false);
-			return;
-		}
-
-		const byte filler = byte.MaxValue;
-
-		var destination = new byte[expectedLength - 1];
-		destination.AsSpan().Fill(filler);
-
-		var actualResult = Unit.TryFormat(destination, out var actualCharsWritten, format);
-
-		Assert.False(actualResult);
-		Assert.Equal(0, actualCharsWritten);
-
-		var expectedDestination = new byte[destination.Length];
-		expectedDestination.AsSpan().Fill(filler);
-		Assert.Equal(expectedDestination, destination);
+		var result = Unit.TryFormat(destination, out var bytesWritten, format);
+		return (result, bytesWritten);
 	}
 }
