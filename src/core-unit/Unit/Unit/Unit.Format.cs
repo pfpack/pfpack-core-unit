@@ -6,8 +6,8 @@ namespace System;
 
 partial struct Unit
 {
-    public string Format(ReadOnlySpan<char> format)
-        =>
+	public string Format(ReadOnlySpan<char> format)
+		=>
 		UnitFormatter.Format(format);
 
 	public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)

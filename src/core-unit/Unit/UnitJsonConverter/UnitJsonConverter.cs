@@ -6,10 +6,10 @@ namespace System;
 
 internal sealed class UnitJsonConverter : JsonConverter<Unit>
 {
-	// We maintain that Unit can be derived from any input value
+    // We maintain that Unit can be derived from any input value
     // represented in any applicable JSON token.
 
-	public override Unit Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override Unit Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         =>
         reader.TokenType switch
         {
@@ -31,9 +31,9 @@ internal sealed class UnitJsonConverter : JsonConverter<Unit>
             throw new JsonException($"An unexpected JSON token type ({unexpected}).")
         };
 
-	// We serialize Unit into an empty JSON object.
+    // We serialize Unit into an empty JSON object.
 
-	public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
     {
         writer.WriteStartObject();
         writer.WriteEndObject();
