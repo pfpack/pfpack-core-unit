@@ -5,12 +5,12 @@ partial struct Unit
 	// Notes on the string versions of parsing, Parse(string, ...) / TryParse(string?, ...):
 	//
 	// - For the explicit implementation we follow the contract which defines
-	// fail for the null input, since TryParse method has [NotNullWhen(true)]
+	// fail for the null input, since the TryParse method has [NotNullWhen(true)]
 	// attribute on the input, and breaking the contract when handling null
 	// may lead to a violation of the user expectations.
 	//
-	// - So, for Parse method we also follow the contract to keep consistency
-	// between Parse and TryParse methods when handling the null input.
+	// - So, for the Parse method we also follow the contract to keep consistency
+	// between the Parse and TryParse methods when handling the null input.
 	//
 	// - To get Unit from a null input, call From method or ToUnit extension,
 	// or use deserialization from null JSON token when applicable.
