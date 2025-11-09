@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace System;
+﻿namespace System;
 
 partial struct Unit
 {
@@ -8,15 +6,10 @@ partial struct Unit
         =>
         UnitForms.General;
 
-    // Redirect to the Format method.
+    // Redirect from the legacy pattern to the new method.
 
-    [Obsolete(NotIntendedMessage_ToStringFormattable, error: true)]
-    [DoesNotReturn]
+    [Obsolete($"This method is not intended for use. Call {nameof(Format)} instead.", error: true)]
     public string ToString(string? format)
         =>
-        throw new NotImplementedException(NotIntendedMessage_ToStringFormattable);
-
-    private const string NotIntendedMessage_ToStringFormattable
-        =
-        $"This method is not intended for use. Call {nameof(Format)} instead.";
+        Format(format);
 }
