@@ -75,17 +75,13 @@ partial class UnitSerializationTests
                 }
             };
 
-            var result = new List<TheoryDataRow<JsonObject, JsonSerializerOptions?>>();
-
             foreach (var obj in objects)
             {
                 foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
-                    result.Add((obj, options));
+                    yield return (obj, options);
                 }
             }
-
-            return result;
         }
     }
 }

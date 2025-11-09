@@ -50,17 +50,13 @@ partial class UnitSerializationTests
     {
         get
         {
-            var result = new List<TheoryDataRow<JsonValue, JsonSerializerOptions?>>();
-
             foreach (var value in EnumerateValues())
             {
                 foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
-                    result.Add((value, options));
+                    yield return (value, options);
                 }
             }
-
-            return result;
 
             static IEnumerable<JsonValue> EnumerateValues()
                 =>

@@ -56,17 +56,13 @@ partial class UnitSerializationTests
                 new(new JsonArray(null, true, false, -1, 0, 1.1m, 1.2, "2"))
             };
 
-            var result = new List<TheoryDataRow<JsonArray, JsonSerializerOptions?>>();
-
             foreach (var array in arrays)
             {
                 foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
-                    result.Add((array, options));
+                    yield return (array, options);
                 }
             }
-
-            return result;
         }
     }
 }
