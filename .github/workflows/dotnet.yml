@@ -54,7 +54,7 @@ jobs:
       run: dotnet restore ./src/*/*/Unit.Tests.csproj
 
     - name: Test Unit.Tests
-      run: dotnet test ./src/*/*/Unit.Tests.csproj --no-restore  -c Release
+      run: dotnet run ./src/*/*/Unit.Tests.csproj --no-restore  -c Release
 
       # Push
 
