@@ -2,21 +2,11 @@
 
 partial struct Unit
 {
-	// As with the From factory and ToUnit extension, and as with deserialization from JSON,
-	// for parsing we maintain that Unit can be derived from any input value.
+	// We maintain that Unit can be derived from any input value.
 
-	// Notes on the string versions of parsing, Parse(string, ...) / TryParse(string?, ...):
-	//
-	// - For the explicit implementation we follow the contract which defines
-	// fail for the null input, since the TryParse method has [NotNullWhen(true)]
-	// attribute on the input, and breaking the contract when handling null
-	// may lead to a violation of the user expectations.
-	//
-	// - So, for the Parse method we also follow the contract to keep consistency
-	// between the Parse and TryParse methods when handling the null input.
-	//
-	// - To get Unit from a null input, call the From method or ToUnit extension,
-	// or use deserialization from null JSON token when applicable.
+	// For the string versions we follow the contract which defines fail on null input,
+	// to keep consistency between Parse and TryParse methods, taking into account that
+	// TryParse has [NotNullWhen(true)] attribute on the input parameter.
 
 	static Unit IParsable<Unit>.Parse(string s, IFormatProvider? provider)
 	{
