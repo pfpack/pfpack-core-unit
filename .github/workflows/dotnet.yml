@@ -23,7 +23,8 @@ jobs:
       with:
         dotnet-version: |
           10.0.x
-        dotnet-quality: 'preview'
+      # dotnet-quality: 'preview' # When using preview versions
+        dotnet-quality: 'ga' # General Availability
 
     # Create Local NuGet Source
 
