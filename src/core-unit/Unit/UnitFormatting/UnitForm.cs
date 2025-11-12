@@ -1,6 +1,6 @@
 ﻿namespace System;
 
-internal static class UnitForms
+internal static class UnitForm
 {
     // General (default) form
     internal const string General = CanonicalExtended;

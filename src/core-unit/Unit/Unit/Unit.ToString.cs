@@ -4,7 +4,7 @@ partial struct Unit
 {
     public override string ToString()
         =>
-        UnitForms.General;
+        UnitForm.General;
 
     // Redirect from the legacy pattern to the new method.
 

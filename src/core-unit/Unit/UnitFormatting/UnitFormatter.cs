@@ -10,19 +10,19 @@ internal static class UnitFormatter
         format switch
         {
             // General (default) form
-            [] or ['G' or 'g'] => UnitForms.General,
+            [] or ['G' or 'g'] => UnitForm.General,
 
             // Basic forms
-            ['U' or 'u'] => UnitForms.Canonical,
-            ['J' or 'j'] => UnitForms.JsonObj,
-            ['E' or 'e'] => UnitForms.Empty,
+            ['U' or 'u'] => UnitForm.Canonical,
+            ['J' or 'j'] => UnitForm.JsonObj,
+            ['E' or 'e'] => UnitForm.Empty,
 
             // Extended forms
-            ['U' or 'u', 'X' or 'x'] => UnitForms.CanonicalExtended,
-            ['J' or 'j', 'X' or 'x'] => UnitForms.JsonObjExtended,
-            ['E' or 'e', 'X' or 'x'] => UnitForms.EmptyExtended,
+            ['U' or 'u', 'X' or 'x'] => UnitForm.CanonicalExtended,
+            ['J' or 'j', 'X' or 'x'] => UnitForm.JsonObjExtended,
+            ['E' or 'e', 'X' or 'x'] => UnitForm.EmptyExtended,
 
             // Fallback to default
-            _ => UnitForms.General
+            _ => UnitForm.General
         };
 }

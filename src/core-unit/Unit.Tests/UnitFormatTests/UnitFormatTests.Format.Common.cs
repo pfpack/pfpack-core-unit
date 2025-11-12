@@ -9,8 +9,8 @@ partial class UnitFormatTests
         =>
         [
             // Empty format
-            ("E", UnitForms.Empty),
-            ("e", UnitForms.Empty),
+            ("E", UnitForm.Empty),
+            ("e", UnitForm.Empty),
             ..
             EnumerateExpectedFormatCases_WithoutEmptyResult(),
         ];
@@ -24,46 +24,46 @@ partial class UnitFormatTests
         =>
         [
             // Default format
-            (null, UnitForms.General),
-            ("", UnitForms.General),
+            (null, UnitForm.General),
+            ("", UnitForm.General),
 
             // General format
-            ("G", UnitForms.General),
-            ("g", UnitForms.General),
+            ("G", UnitForm.General),
+            ("g", UnitForm.General),
 
             // Canonical format
-            ("U", UnitForms.Canonical),
-            ("u", UnitForms.Canonical),
+            ("U", UnitForm.Canonical),
+            ("u", UnitForm.Canonical),
 
             // JSON Object format
-            ("J", UnitForms.JsonObj),
-            ("j", UnitForms.JsonObj),
+            ("J", UnitForm.JsonObj),
+            ("j", UnitForm.JsonObj),
 
             // Empty format - miss here on purpose
 
             // Canonical entended
-            ("UX", UnitForms.CanonicalExtended),
-            ("ux", UnitForms.CanonicalExtended),
-            ("Ux", UnitForms.CanonicalExtended),
-            ("uX", UnitForms.CanonicalExtended),
+            ("UX", UnitForm.CanonicalExtended),
+            ("ux", UnitForm.CanonicalExtended),
+            ("Ux", UnitForm.CanonicalExtended),
+            ("uX", UnitForm.CanonicalExtended),
 
             // JSON entended
-            ("JX", UnitForms.JsonObjExtended),
-            ("jx", UnitForms.JsonObjExtended),
-            ("Jx", UnitForms.JsonObjExtended),
-            ("jX", UnitForms.JsonObjExtended),
+            ("JX", UnitForm.JsonObjExtended),
+            ("jx", UnitForm.JsonObjExtended),
+            ("Jx", UnitForm.JsonObjExtended),
+            ("jX", UnitForm.JsonObjExtended),
 
             // Empty entended
-            ("EX", UnitForms.EmptyExtended),
-            ("ex", UnitForms.EmptyExtended),
-            ("Ex", UnitForms.EmptyExtended),
-            ("eX", UnitForms.EmptyExtended),
+            ("EX", UnitForm.EmptyExtended),
+            ("ex", UnitForm.EmptyExtended),
+            ("Ex", UnitForm.EmptyExtended),
+            ("eX", UnitForm.EmptyExtended),
 
             // Unknown format
-            ("AnUnknown", UnitForms.General),
+            ("AnUnknown", UnitForm.General),
         ];
 
-    private static class UnitForms
+    private static class UnitForm
     {
         // General (default) form
         internal const string General = CanonicalExtended;
