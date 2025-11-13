@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
@@ -44,7 +46,7 @@ partial class UnitSerializationTests
         _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
     }
 
-    public static TheoryData<JsonObject, JsonSerializerOptions?> DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases
+    public static IEnumerable<TheoryDataRow<JsonObject, JsonSerializerOptions?>> DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases
     {
         get
         {
@@ -73,17 +75,13 @@ partial class UnitSerializationTests
                 }
             };
 
-            var result = new TheoryData<JsonObject, JsonSerializerOptions?>();
-
             foreach (var obj in objects)
             {
                 foreach (var options in EnumerateJsonSerializerOptionsCases())
                 {
-                    result.Add(obj, options);
+                    yield return (obj, options);
                 }
             }
-
-            return result;
         }
     }
 }

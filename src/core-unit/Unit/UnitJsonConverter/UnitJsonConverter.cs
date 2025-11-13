@@ -1,29 +1,48 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace System;
 
 internal sealed class UnitJsonConverter : JsonConverter<Unit>
 {
+    // We maintain that Unit can be derived from any input value
+    // represented in an applicable JSON token.
+
     public override Unit Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        switch (reader.TokenType)
+        =>
+        reader.TokenType switch
         {
-            case JsonTokenType.StartObject or JsonTokenType.StartArray:
-                reader.Skip();
-                return default;
+            JsonTokenType.StartObject or
+            JsonTokenType.StartArray
+            =>
+            ReadObjectOrArray(ref reader),
 
-            case JsonTokenType.String or JsonTokenType.Number or JsonTokenType.True or JsonTokenType.False or JsonTokenType.Null:
-                return default;
+            JsonTokenType.String or
+            JsonTokenType.Number or
+            JsonTokenType.True or
+            JsonTokenType.False or
+            JsonTokenType.Null
+            =>
+            default,
 
-            case var unexpected:
-                throw new JsonException($"An unexpected JSON token type ({unexpected}).");
-        }
-    }
+            var unexpected
+            =>
+            throw new JsonException($"An unexpected JSON token type ({unexpected}).")
+        };
+
+    // We serialize Unit into an empty JSON object.
 
     public override void Write(Utf8JsonWriter writer, Unit value, JsonSerializerOptions options)
     {
         writer.WriteStartObject();
         writer.WriteEndObject();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static Unit ReadObjectOrArray(ref Utf8JsonReader reader)
+    {
+        reader.Skip();
+        return default;
     }
 }
