@@ -22,7 +22,7 @@ partial struct Unit
 
     public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
     {
-        ReadOnlySpan<byte> utf8Formatted = new(Encoding.UTF8.GetBytes(UnitFormatter.Format(format)));
+        var utf8Formatted = UnitFormatter.FormatToUtf8(format);
 
         // Call TryCopyTo instead of CopyTo not to duplicate the length check here
         var result = utf8Formatted.TryCopyTo(utf8Destination);
