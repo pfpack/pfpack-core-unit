@@ -37,8 +37,8 @@ internal static class UnitFormUtf8
             var bytesCount = encoding.GetByteCount(s);
             var bytes = new byte[bytesCount];
 
-            ReadOnlySpan<char> sourceSpan = s;
-            Span<byte> destSpan = new(bytes);
+            var sourceSpan = (ReadOnlySpan<char>)s;
+            var destSpan = new Span<byte>(bytes);
 
             var bytesWritten = encoding.GetBytes(sourceSpan, destSpan);
             Debug.Assert(bytesWritten == bytesCount);
