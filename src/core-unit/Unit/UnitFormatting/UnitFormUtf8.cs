@@ -19,16 +19,18 @@ internal static class UnitFormUtf8
 
     private static class InnerBytes
     {
-        internal static readonly byte[] General = Utf8.GetBytes(UnitForm.General);
+        internal static readonly byte[] General = InnerGetBytes(UnitForm.General);
 
-        internal static readonly byte[] Canonical = Utf8.GetBytes(UnitForm.Canonical);
-        internal static readonly byte[] JsonObj = Utf8.GetBytes(UnitForm.JsonObj);
-        internal static readonly byte[] Empty = Utf8.GetBytes(UnitForm.Empty);
+        internal static readonly byte[] Canonical = InnerGetBytes(UnitForm.Canonical);
+        internal static readonly byte[] JsonObj = InnerGetBytes(UnitForm.JsonObj);
+        internal static readonly byte[] Empty = InnerGetBytes(UnitForm.Empty);
 
-        internal static readonly byte[] CanonicalExtended = Utf8.GetBytes(UnitForm.CanonicalExtended);
-        internal static readonly byte[] JsonObjExtended = Utf8.GetBytes(UnitForm.JsonObjExtended);
-        internal static readonly byte[] EmptyExtended = Utf8.GetBytes(UnitForm.EmptyExtended);
+        internal static readonly byte[] CanonicalExtended = InnerGetBytes(UnitForm.CanonicalExtended);
+        internal static readonly byte[] JsonObjExtended = InnerGetBytes(UnitForm.JsonObjExtended);
+        internal static readonly byte[] EmptyExtended = InnerGetBytes(UnitForm.EmptyExtended);
 
-        private static Encoding Utf8 => Encoding.UTF8;
+        private static byte[] InnerGetBytes(string s)
+            =>
+            Encoding.UTF8.GetBytes(s);
     }
 }
