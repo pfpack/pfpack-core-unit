@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 
 namespace System;
 
@@ -30,7 +31,19 @@ internal static class UnitFormUtf8
         internal static readonly byte[] EmptyExtended = InnerGetBytes(UnitForm.EmptyExtended);
 
         private static byte[] InnerGetBytes(string s)
-            =>
-            Encoding.UTF8.GetBytes(s);
+        {
+            var encoding = Encoding.UTF8;
+
+            var bytesCount = encoding.GetByteCount(s);
+            var bytes = new byte[bytesCount];
+
+            ReadOnlySpan<char> sourceSpan = s;
+            Span<byte> destSpan = new(bytes);
+
+            var bytesWritten = encoding.GetBytes(sourceSpan, destSpan);
+            Debug.Assert(bytesWritten == bytesCount);
+
+            return bytes;
+        }
     }
 }
