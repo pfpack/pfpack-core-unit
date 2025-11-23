@@ -11,5 +11,5 @@ partial struct Unit
     [Obsolete($"This method is not intended for use. Call {nameof(Format)} instead.", error: true)]
     public string ToString(string? format)
         =>
-        Format(format);
+        Format(format.AsSpan());
 }
