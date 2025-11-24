@@ -13,7 +13,7 @@ partial struct Unit
     // - not to expose the inner cache state despite it's protected by ReadOnlySpan.
     public byte[] FormatToUtf8(ReadOnlySpan<char> format)
         =>
-        UnitFormatter.FormatToUtf8(format).ToArray();
+        UnitFormatter.FormatToUtf8Span(format).ToArray();
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
     {
@@ -27,7 +27,7 @@ partial struct Unit
 
     public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
     {
-        var utf8Formatted = UnitFormatter.FormatToUtf8(format);
+        var utf8Formatted = UnitFormatter.FormatToUtf8Span(format);
 
         // Call TryCopyTo instead of CopyTo not to duplicate the length check here
         var result = utf8Formatted.TryCopyTo(utf8Destination);
