@@ -1,7 +1,5 @@
 ﻿#pragma warning disable CA1822 // Mark members as static
 
-using System.Text;
-
 namespace System;
 
 partial struct Unit
