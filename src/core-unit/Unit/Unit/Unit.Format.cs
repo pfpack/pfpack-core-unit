@@ -8,6 +8,13 @@ partial struct Unit
         =>
         UnitFormatter.Format(format);
 
+    // We use a design with byte array result and copying the result bytes for following:
+    // - to provide to the user a possibility to work with both bytes and a span over them;
+    // - not to expose the inner cache state despite it's protected by ReadOnlySpan.
+    public byte[] FormatToUtf8(ReadOnlySpan<char> format)
+        =>
+        UnitFormatter.FormatToUtf8(format).ToArray();
+
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
     {
         var formatted = UnitFormatter.Format(format);
