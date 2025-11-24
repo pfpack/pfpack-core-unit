@@ -5,7 +5,7 @@ namespace System;
 partial class UnitFormatter
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static ReadOnlySpan<byte> FormatToUtf8(ReadOnlySpan<char> format)
+    internal static ReadOnlySpan<byte> FormatToUtf8Span(ReadOnlySpan<char> format)
         =>
         format switch
         {

@@ -3,7 +3,7 @@
 partial struct Unit
 {
     // We maintain that Unit can be derived from any input value.
-
+    //
     // For the string versions we follow the contract which defines fail on null input,
     // to keep consistency between Parse and TryParse methods, taking into account that
     // TryParse has [NotNullWhen(true)] attribute on the input parameter.

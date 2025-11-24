@@ -17,6 +17,8 @@ internal static class UnitFormUtf8
     internal static ReadOnlySpan<byte> JsonObjExtended => new(InnerBytes.JsonObjExtended);
     internal static ReadOnlySpan<byte> EmptyExtended => new(InnerBytes.EmptyExtended);
 
+    // We initialize the byte arrays inline with no static ctor to obtain and cache them
+    // lazily only on demand, and also isolate them in a nested class for thread-safety.
     private static class InnerBytes
     {
         internal static readonly byte[] General = InnerGetBytes(UnitForm.General);
@@ -29,6 +31,7 @@ internal static class UnitFormUtf8
         internal static readonly byte[] JsonObjExtended = InnerGetBytes(UnitForm.JsonObjExtended);
         internal static readonly byte[] EmptyExtended = InnerGetBytes(UnitForm.EmptyExtended);
 
+        // We use the most proven method to obtain UTF-8 bytes.
         private static byte[] InnerGetBytes(string s)
             =>
             Encoding.UTF8.GetBytes(s);
