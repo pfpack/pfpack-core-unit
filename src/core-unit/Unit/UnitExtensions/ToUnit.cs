@@ -1,16 +1,17 @@
-﻿namespace System;
+﻿#pragma warning disable IDE0060 // Remove unused parameter
+
+using System.Runtime.CompilerServices;
+
+namespace System;
 
 partial class UnitExtensions
 {
     // We maintain that Unit can be derived from any input value.
-    // Unit.From is being called instead of returning default(Unit) for the sake of clarity.
     //
-    // Don't apply AggressiveInlining to this extension since it's already applied to Unit.From
-    // and redundant use of this attribute can reduce performance.
+    // This extension is for more convenient syntax when getting Unit from a result value.
     //
-    // This extension is for more convenient syntax when converting to Unit from a result value.
+    // (For better performance, default(Unit) is returned instead of calling symmetric Unit.From factory.)
 
-    public static Unit ToUnit<TResult>(this TResult result)
-        =>
-        Unit.From(result);
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Unit ToUnit<TResult>(this TResult result) => default;
 }
