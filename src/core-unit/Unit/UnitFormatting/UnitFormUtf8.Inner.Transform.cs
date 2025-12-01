@@ -28,7 +28,7 @@ partial class UnitFormUtf8
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static ReadOnlySpan<byte> InnerToSpan(byte[]? bytes)
+    private static ReadOnlySpan<byte> InnerAsSpan(byte[]? bytes)
     {
         Debug.Assert(bytes is null || bytes.Length != default);
 
