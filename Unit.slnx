@@ -4,6 +4,10 @@
     <File Path="LICENSE" />
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/.sln/.github/" />
+  <Folder Name="/.sln/.github/workflows/">
+    <File Path=".github/workflows/dotnet.yml" />
+  </Folder>
   <Folder Name="/.sln/docs/" />
   <Folder Name="/.sln/docs/core-unit/">
     <File Path="docs/core-unit/README.md" />
