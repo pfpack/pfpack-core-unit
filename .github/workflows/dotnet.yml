@@ -36,16 +36,16 @@ jobs:
       run: dotnet restore ./Unit.slnx
 
     - name: Build Solution
-      run: dotnet build ./Unit.slnx -c Release --no-restore
+      run: dotnet build ./Unit.slnx --no-restore -c Release
 
     - name: Pack Unit
-      run: dotnet pack ./src/*/*/Unit.csproj -c Release --no-build --output ~/nuget
+      run: dotnet pack ./src/*/*/Unit.csproj --no-build --output ~/nuget -c Release
 
     - name: Run Unit.Tests.Old
-      run: dotnet run --project ./src/*/*/Unit.Tests.Old.csproj -c Release --no-build
+      run: dotnet run --project ./src/*/*/Unit.Tests.Old.csproj --no-build -c Release
 
     - name: Run Unit.Tests
-      run: dotnet run --project ./src/*/*/Unit.Tests.csproj -c Release --no-build
+      run: dotnet run --project ./src/*/*/Unit.Tests.csproj --no-build -c Release
 
     # Push
 
