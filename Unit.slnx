@@ -1,4 +1,13 @@
 <Solution>
+  <Folder Name="/.sln/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/.sln/docs/" />
+  <Folder Name="/.sln/docs/core-unit/">
+    <File Path="docs/core-unit/README.md" />
+  </Folder>
   <Project Path="src/core-unit/Unit.Tests.Old/Unit.Tests.Old.csproj" />
   <Project Path="src/core-unit/Unit.Tests/Unit.Tests.csproj" />
   <Project Path="src/core-unit/Unit/Unit.csproj" />
