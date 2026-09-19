@@ -38,6 +38,7 @@ jobs:
     - name: Build Solution
       run: dotnet build ./Unit.slnx --no-restore -c Release
 
+      # Pack immediately after the build to avoid any potential impact of the tests on the build output
     - name: Pack Unit
       run: dotnet pack ./src/*/*/Unit.csproj --no-build --output ~/nuget -c Release
 
