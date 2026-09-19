@@ -4,7 +4,7 @@ partial struct Unit
 {
     string IFormattable.ToString(string? format, IFormatProvider? formatProvider)
         =>
-        Format(format);
+        Format(format.AsSpan());
 
     bool ISpanFormattable.TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         =>

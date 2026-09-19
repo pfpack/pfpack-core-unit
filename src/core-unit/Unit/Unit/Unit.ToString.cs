@@ -8,7 +8,7 @@ partial struct Unit
 
     // Redirect from the legacy pattern to the new method.
 
-    [Obsolete($"This method is not intended for use. Call {nameof(Format)} instead.", error: true)]
+    [Obsolete($"This method is not intended for use. Call {nameof(Format)} instead.")]
     public string ToString(string? format)
         =>
         Format(format.AsSpan());

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFrameworks>net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -10,26 +11,27 @@
     <NoWarn>$(NoWarn);IDE0130</NoWarn>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <EnableNUnitRunner>true</EnableNUnitRunner>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
-    <Copyright>Copyright © 2020-2025 Andrei Sergeev, Pavel Moskovoy</Copyright>
+    <Copyright>Copyright © 2020-2026 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack.Core.Tests</RootNamespace>
     <AssemblyName>PrimeFuncPack.Core.Unit.Tests.Old</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="8.0.1">
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="NUnit" Version="4.5.1" />
-    <PackageReference Include="NUnit.Analyzers" Version="4.12.0">
+    <PackageReference Include="NUnit" Version="4.6.1" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.15.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
-    <PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="3.1.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.3.0" />
+    <PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-name: Setup Unit .NET
+name: PrimeFuncPack Core.Unit
 
 on:
   push:
@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: |
           10.0.x
@@ -30,35 +30,30 @@ jobs:
     - name: Add Local Nuget Source
       run: dotnet nuget add source ~/nuget
 
-      # Unit
+    # Unit
 
-    - name: Restore Unit
-      run: dotnet restore ./src/*/*/Unit.csproj
+    - name: Restore Solution
+      run: dotnet restore ./Unit.slnx
 
-    - name: Build Unit
-      run: dotnet build ./src/*/*/Unit.csproj --no-restore  -c Release
+    - name: Build Solution
+      run: dotnet build ./Unit.slnx --no-restore -c Release
 
+      # Pack immediately after the build to avoid any potential impact of the tests on the build output
     - name: Pack Unit
-      run: dotnet pack ./src/*/*/Unit.csproj --no-restore -o ~/nuget  -c Release
+      run: dotnet pack ./src/*/*/Unit.csproj --no-build --output ~/nuget -c Release
 
-    - name: Restore Unit.Tests.Old
-      run: dotnet restore ./src/*/*/Unit.Tests.Old.csproj
+    - name: Run Unit.Tests.Old
+      run: dotnet run --project ./src/*/*/Unit.Tests.Old.csproj --no-build -c Release
 
-    - name: Test Unit.Tests.Old
-      run: dotnet test ./src/*/*/Unit.Tests.Old.csproj --no-restore  -c Release
+    - name: Run Unit.Tests
+      run: dotnet run --project ./src/*/*/Unit.Tests.csproj --no-build -c Release
 
-    - name: Restore Unit.Tests
-      run: dotnet restore ./src/*/*/Unit.Tests.csproj
-
-    - name: Test Unit.Tests
-      run: dotnet test ./src/*/*/Unit.Tests.csproj --no-restore  -c Release
-
-      # Push
+    # Push
 
     - name: Push Packages
       if: ${{ github.event_name == 'release' }}
       run: >
         dotnet nuget push "../../../nuget/*.nupkg"
-        -s https://api.nuget.org/v3/index.json
-        -k ${{ secrets.NuGetSourcePassword }}
+        --source https://api.nuget.org/v3/index.json
+        --api-key ${{ secrets.NuGetSourcePassword }}
         --skip-duplicate

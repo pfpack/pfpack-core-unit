@@ -1,6 +1,6 @@
 ﻿namespace System;
 
-partial class UnitFormUtf8
+internal static partial class UnitFormUtf8
 {
     // General (default) form
     internal static ReadOnlySpan<byte> General => InnerAsSpan(InnerGeneral.Value);
