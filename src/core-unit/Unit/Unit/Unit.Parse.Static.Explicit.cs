@@ -2,11 +2,9 @@
 
 partial struct Unit
 {
-    // We maintain that Unit can be derived from any input value.
-    //
-    // For the string versions we follow the contract which defines fail on null input,
-    // to keep consistency between Parse and TryParse methods, taking into account that
-    // TryParse has [NotNullWhen(true)] attribute on the input parameter.
+    // We maintain that Unit can be derived from any input value, including null.
+    // But for the parsing operations, we keep consistency with the IParsable<T>
+    // contract and expect that a string input is provided to succeed.
 
     static Unit IParsable<Unit>.Parse(string s, IFormatProvider? provider)
     {
