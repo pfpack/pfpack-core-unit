@@ -7,12 +7,12 @@ partial class UnitTests
     [Test]
     public void Value_ExpectDefault()
         =>
-        Assert.That(Unit.Value, Is.EqualTo(default(Unit)));
+        Assert.That(Unit.Value, Is.Default);
 
     [Test]
     public void Get_ExpectDefault()
         =>
-        Assert.That(Unit.Get(), Is.EqualTo(default(Unit)));
+        Assert.That(Unit.Get(), Is.Default);
 
     [Test]
     public void Get_ExpectValue()
@@ -22,7 +22,7 @@ partial class UnitTests
     [Test]
     public void New_ExpectDefault()
         =>
-        Assert.That(new Unit(), Is.EqualTo(default(Unit)));
+        Assert.That(new Unit(), Is.Default);
 
     [Test]
     public void New_ExpectValue()
