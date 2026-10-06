@@ -9,21 +9,17 @@ partial class UnitFormUtf8
     private static Encoding Encoding => Encoding.UTF8;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static byte[]? InnerGetBytes(string s)
+    private static byte[]? InnerGetBytes(ReadOnlySpan<char> chars)
     {
-        var bytesCount = Encoding.GetByteCount(s);
+        var bytesCount = Encoding.GetByteCount(chars);
         if (bytesCount == default)
         {
             return null;
         }
 
         var bytes = new byte[bytesCount];
-
-        var sourceSpan = s.AsSpan();
-        var destSpan = new Span<byte>(bytes);
-        var bytesWritten = Encoding.GetBytes(sourceSpan, destSpan);
-        Debug.Assert(bytesWritten == bytesCount);
-
+        var destSpan = new Span<byte>(bytes); // Explicit dest span for clarity
+        _ = Encoding.GetBytes(chars, destSpan);
         return bytes;
     }
 
