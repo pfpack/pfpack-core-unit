@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitInvokeAsyncTests
 {
     [Test]
-    public void InvokeAsync_15_FuncIsNull_ExpectArgumentNullException()
+    public async Task InvokeAsync_15_FuncIsNull_ExpectArgumentNullException()
     {
         Func<StructType, RefType, string, int, object, DateTime, StructType?, decimal, RefType, object, StructType, string, double, RefType, string, Task> funcAsync = null!;
 
@@ -29,7 +29,7 @@ partial class UnitInvokeAsyncTests
         var arg14 = MinusFifteenIdRefType;
         var arg15 = ThreeWhiteSpacesString;
 
-        var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _ = Unit.InvokeAsync(funcAsync, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+        var ex = await Assert.ThrowsAsync<ArgumentNullException>(() => _ = Unit.InvokeAsync(funcAsync, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
         Assert.That(ex!.ParamName, Is.EqualTo("funcAsync"));
     }
 
