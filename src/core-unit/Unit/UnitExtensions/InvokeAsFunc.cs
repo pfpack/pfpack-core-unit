@@ -10,11 +10,11 @@ partial class UnitExtensions
 
     public static Unit InvokeAsFunc<T>(
         this Action<T> action,
-        T obj)
+        T arg)
         =>
         Unit.InternalInvoke(
             action ?? throw new ArgumentNullException(nameof(action)),
-            obj);
+            arg);
 
     public static Unit InvokeAsFunc<T1, T2>(
         this Action<T1, T2> action,

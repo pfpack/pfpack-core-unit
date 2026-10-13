@@ -12,11 +12,11 @@ partial struct Unit
 
     public static Task<Unit> InvokeAsync<T>(
         Func<T, Task> funcAsync,
-        T obj)
+        T arg)
         =>
         InternalInvokeAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
-            obj);
+            arg);
 
     public static Task<Unit> InvokeAsync<T1, T2>(
         Func<T1, T2, Task> funcAsync,

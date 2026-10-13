@@ -10,11 +10,11 @@ partial struct Unit
 
     public static Unit Invoke<T>(
         Action<T> action,
-        T obj)
+        T arg)
         =>
         InternalInvoke(
             action ?? throw new ArgumentNullException(nameof(action)),
-            obj);
+            arg);
 
     public static Unit Invoke<T1, T2>(
         Action<T1, T2> action,

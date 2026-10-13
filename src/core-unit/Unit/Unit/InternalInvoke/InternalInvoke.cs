@@ -16,9 +16,9 @@ partial struct Unit
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Unit InternalInvoke<T>(
         Action<T> action,
-        T obj)
+        T arg)
     {
-        action.Invoke(obj);
+        action.Invoke(arg);
 
         return default;
     }

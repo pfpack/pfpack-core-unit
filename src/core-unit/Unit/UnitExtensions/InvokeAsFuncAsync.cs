@@ -12,11 +12,11 @@ partial class UnitExtensions
 
     public static Task<Unit> InvokeAsFuncAsync<T>(
         this Func<T, Task> funcAsync,
-        T obj)
+        T arg)
         =>
         Unit.InternalInvokeAsync(
             funcAsync ?? throw new ArgumentNullException(nameof(funcAsync)),
-            obj);
+            arg);
 
     public static Task<Unit> InvokeAsFuncAsync<T1, T2>(
         this Func<T1, T2, Task> funcAsync,

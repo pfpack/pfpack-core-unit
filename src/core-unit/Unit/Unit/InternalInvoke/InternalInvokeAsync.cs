@@ -17,9 +17,9 @@ partial struct Unit
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static async Task<Unit> InternalInvokeAsync<T>(
         Func<T, Task> funcAsync,
-        T obj)
+        T arg)
     {
-        await funcAsync.Invoke(obj).ConfigureAwait(false);
+        await funcAsync.Invoke(arg).ConfigureAwait(false);
 
         return default;
     }
