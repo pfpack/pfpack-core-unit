@@ -16,7 +16,6 @@ public static class UnitInvokeRefStructTests
             arg);
 
         Assert.Equal(default, result);
-
         Assert.Equal(arg, [1]);
     }
 
@@ -25,6 +24,7 @@ public static class UnitInvokeRefStructTests
     {
         var arg1 = AllocateArg();
         var arg2 = AllocateArg();
+
         var result = Unit.Invoke((
             arg1,
             arg2) =>
