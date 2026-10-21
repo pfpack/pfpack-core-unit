@@ -11,9 +11,8 @@ public static class UnitInvokeRefStructTests
     {
         var arg = AllocateArg();
 
-        var result = Unit.Invoke(
-            arg => FillArg(arg, 1),
-            arg);
+        static void Action(Span<int> arg) => FillArg(arg, 1);
+        var result = Unit.Invoke(Action, arg);
 
         Assert.Equal(default, result);
         Assert.Equal(arg, [1]);
@@ -25,15 +24,18 @@ public static class UnitInvokeRefStructTests
         var arg1 = AllocateArg();
         var arg2 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
-        },
-        arg1,
-        arg2);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2);
 
         Assert.Equal(default, result);
 
@@ -48,18 +50,21 @@ public static class UnitInvokeRefStructTests
         var arg2 = AllocateArg();
         var arg3 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
             FillArg(arg3, 3);
-        },
-        arg1,
-        arg2,
-        arg3);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3);
 
         Assert.Equal(default, result);
 
@@ -76,21 +81,24 @@ public static class UnitInvokeRefStructTests
         var arg3 = AllocateArg();
         var arg4 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
             FillArg(arg3, 3);
             FillArg(arg4, 4);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4);
 
         Assert.Equal(default, result);
 
@@ -109,24 +117,27 @@ public static class UnitInvokeRefStructTests
         var arg4 = AllocateArg();
         var arg5 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
             FillArg(arg3, 3);
             FillArg(arg4, 4);
             FillArg(arg5, 5);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5);
 
         Assert.Equal(default, result);
 
@@ -147,13 +158,13 @@ public static class UnitInvokeRefStructTests
         var arg5 = AllocateArg();
         var arg6 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -161,13 +172,16 @@ public static class UnitInvokeRefStructTests
             FillArg(arg4, 4);
             FillArg(arg5, 5);
             FillArg(arg6, 6);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6);
 
         Assert.Equal(default, result);
 
@@ -190,14 +204,14 @@ public static class UnitInvokeRefStructTests
         var arg6 = AllocateArg();
         var arg7 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -206,14 +220,17 @@ public static class UnitInvokeRefStructTests
             FillArg(arg5, 5);
             FillArg(arg6, 6);
             FillArg(arg7, 7);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7);
 
         Assert.Equal(default, result);
 
@@ -238,15 +255,15 @@ public static class UnitInvokeRefStructTests
         var arg7 = AllocateArg();
         var arg8 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -256,15 +273,18 @@ public static class UnitInvokeRefStructTests
             FillArg(arg6, 6);
             FillArg(arg7, 7);
             FillArg(arg8, 8);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8);
 
         Assert.Equal(default, result);
 
@@ -291,16 +311,16 @@ public static class UnitInvokeRefStructTests
         var arg8 = AllocateArg();
         var arg9 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -311,16 +331,19 @@ public static class UnitInvokeRefStructTests
             FillArg(arg7, 7);
             FillArg(arg8, 8);
             FillArg(arg9, 9);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9);
 
         Assert.Equal(default, result);
 
@@ -349,17 +372,17 @@ public static class UnitInvokeRefStructTests
         var arg9 = AllocateArg();
         var arg10 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -371,17 +394,20 @@ public static class UnitInvokeRefStructTests
             FillArg(arg8, 8);
             FillArg(arg9, 9);
             FillArg(arg10, 10);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10);
 
         Assert.Equal(default, result);
 
@@ -412,18 +438,18 @@ public static class UnitInvokeRefStructTests
         var arg10 = AllocateArg();
         var arg11 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -436,18 +462,21 @@ public static class UnitInvokeRefStructTests
             FillArg(arg9, 9);
             FillArg(arg10, 10);
             FillArg(arg11, 11);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11);
 
         Assert.Equal(default, result);
 
@@ -480,19 +509,19 @@ public static class UnitInvokeRefStructTests
         var arg11 = AllocateArg();
         var arg12 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11,
-            arg12) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11,
+            Span<int> arg12)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -506,19 +535,22 @@ public static class UnitInvokeRefStructTests
             FillArg(arg10, 10);
             FillArg(arg11, 11);
             FillArg(arg12, 12);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11,
-        arg12);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11,
+            arg12);
 
         Assert.Equal(default, result);
 
@@ -553,20 +585,20 @@ public static class UnitInvokeRefStructTests
         var arg12 = AllocateArg();
         var arg13 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11,
-            arg12,
-            arg13) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11,
+            Span<int> arg12,
+            Span<int> arg13)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -581,20 +613,23 @@ public static class UnitInvokeRefStructTests
             FillArg(arg11, 11);
             FillArg(arg12, 12);
             FillArg(arg13, 13);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11,
-        arg12,
-        arg13);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11,
+            arg12,
+            arg13);
 
         Assert.Equal(default, result);
 
@@ -631,21 +666,21 @@ public static class UnitInvokeRefStructTests
         var arg13 = AllocateArg();
         var arg14 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11,
-            arg12,
-            arg13,
-            arg14) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11,
+            Span<int> arg12,
+            Span<int> arg13,
+            Span<int> arg14)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -661,21 +696,24 @@ public static class UnitInvokeRefStructTests
             FillArg(arg12, 12);
             FillArg(arg13, 13);
             FillArg(arg14, 14);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11,
-        arg12,
-        arg13,
-        arg14);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11,
+            arg12,
+            arg13,
+            arg14);
 
         Assert.Equal(default, result);
 
@@ -714,22 +752,22 @@ public static class UnitInvokeRefStructTests
         var arg14 = AllocateArg();
         var arg15 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11,
-            arg12,
-            arg13,
-            arg14,
-            arg15) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11,
+            Span<int> arg12,
+            Span<int> arg13,
+            Span<int> arg14,
+            Span<int> arg15)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -746,22 +784,25 @@ public static class UnitInvokeRefStructTests
             FillArg(arg13, 13);
             FillArg(arg14, 14);
             FillArg(arg15, 15);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11,
-        arg12,
-        arg13,
-        arg14,
-        arg15);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11,
+            arg12,
+            arg13,
+            arg14,
+            arg15);
 
         Assert.Equal(default, result);
 
@@ -802,23 +843,23 @@ public static class UnitInvokeRefStructTests
         var arg15 = AllocateArg();
         var arg16 = AllocateArg();
 
-        var result = Unit.Invoke((
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6,
-            arg7,
-            arg8,
-            arg9,
-            arg10,
-            arg11,
-            arg12,
-            arg13,
-            arg14,
-            arg15,
-            arg16) =>
+        static void Action(
+            Span<int> arg1,
+            Span<int> arg2,
+            Span<int> arg3,
+            Span<int> arg4,
+            Span<int> arg5,
+            Span<int> arg6,
+            Span<int> arg7,
+            Span<int> arg8,
+            Span<int> arg9,
+            Span<int> arg10,
+            Span<int> arg11,
+            Span<int> arg12,
+            Span<int> arg13,
+            Span<int> arg14,
+            Span<int> arg15,
+            Span<int> arg16)
         {
             FillArg(arg1, 1);
             FillArg(arg2, 2);
@@ -836,23 +877,26 @@ public static class UnitInvokeRefStructTests
             FillArg(arg14, 14);
             FillArg(arg15, 15);
             FillArg(arg16, 16);
-        },
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6,
-        arg7,
-        arg8,
-        arg9,
-        arg10,
-        arg11,
-        arg12,
-        arg13,
-        arg14,
-        arg15,
-        arg16);
+        }
+
+        var result = Unit.Invoke(
+            Action,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            arg6,
+            arg7,
+            arg8,
+            arg9,
+            arg10,
+            arg11,
+            arg12,
+            arg13,
+            arg14,
+            arg15,
+            arg16);
 
         Assert.Equal(default, result);
 
