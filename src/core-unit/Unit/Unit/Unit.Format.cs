@@ -8,9 +8,6 @@ partial struct Unit
         =>
         UnitFormatter.Format(format);
 
-    // We use a design with byte array result and copying the result bytes for following:
-    // - to provide to the user a possibility to work with both bytes and a span over them;
-    // - not to expose the inner cache state despite it's protected by ReadOnlySpan.
     public byte[] FormatToUtf8(ReadOnlySpan<char> format)
         =>
         UnitFormatter.FormatToUtf8Span(format).ToArray();
@@ -19,7 +16,6 @@ partial struct Unit
     {
         var formatted = UnitFormatter.Format(format);
 
-        // Call TryCopyTo instead of CopyTo not to duplicate the length check here
         var result = formatted.TryCopyTo(destination);
         charsWritten = result ? formatted.Length : default;
         return result;
@@ -29,7 +25,6 @@ partial struct Unit
     {
         var utf8Formatted = UnitFormatter.FormatToUtf8Span(format);
 
-        // Call TryCopyTo instead of CopyTo not to duplicate the length check here
         var result = utf8Formatted.TryCopyTo(utf8Destination);
         bytesWritten = result ? utf8Formatted.Length : default;
         return result;

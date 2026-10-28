@@ -12,7 +12,7 @@ partial class UnitSerializationTests
     public static void SerializeUnitToString_ExpectEmptyJsonObject(JsonSerializerOptions? options)
     {
         var actual = JsonSerializer.Serialize(default(Unit), options);
-        var expected = JsonSerializer.Serialize(new JsonObject()); // default options expected
+        var expected = JsonSerializer.Serialize(new JsonObject());
         Assert.Equal(expected, actual);
     }
 
@@ -30,7 +30,7 @@ partial class UnitSerializationTests
     public static void SerializeDtoWithUnitToString_ExpectEmptyJsonObject(JsonSerializerOptions? options)
     {
         var actual = JsonSerializer.Serialize(new DtoWithUnit(), options);
-        var expected = JsonSerializer.Serialize(BuildDtoWithUnitValueNode()); // default options expected
+        var expected = JsonSerializer.Serialize(BuildDtoWithUnitValueNode());
         Assert.Equal(expected, actual);
     }
 

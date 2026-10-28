@@ -18,7 +18,7 @@ partial class UnitFormUtf8
         }
 
         var bytes = new byte[bytesCount];
-        var destSpan = new Span<byte>(bytes); // Explicit dest span for clarity
+        var destSpan = new Span<byte>(bytes);
         _ = Encoding.GetBytes(chars, destSpan);
         return bytes;
     }

@@ -6,8 +6,6 @@ partial struct Unit
         =>
         UnitForm.General;
 
-    // Redirect from the legacy pattern to the new method.
-
     [Obsolete("This method is not intended for use. Call Format instead.")]
     public string ToString(string? format)
         =>

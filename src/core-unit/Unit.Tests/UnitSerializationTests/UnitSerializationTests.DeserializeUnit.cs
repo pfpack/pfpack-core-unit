@@ -11,7 +11,7 @@ partial class UnitSerializationTests
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
-        var source = JsonSerializer.Serialize(new JsonObject()); // default options expected
+        var source = JsonSerializer.Serialize(new JsonObject());
         _ = JsonSerializer.Deserialize<Unit>(source, options);
     }
 
@@ -27,7 +27,7 @@ partial class UnitSerializationTests
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeDtoWithUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
-        var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode()); // default options expected
+        var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode());
         _ = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
     }
 
