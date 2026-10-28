@@ -16,17 +16,27 @@ partial struct Unit
     {
         var formatted = UnitFormatter.Format(format);
 
-        var result = formatted.TryCopyTo(destination);
-        charsWritten = result ? formatted.Length : default;
-        return result;
+        if (formatted.TryCopyTo(destination))
+        {
+            charsWritten = formatted.Length;
+            return true;
+        }
+
+        charsWritten = default;
+        return false;
     }
 
     public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
     {
         var utf8Formatted = UnitFormatter.FormatToUtf8Span(format);
 
-        var result = utf8Formatted.TryCopyTo(utf8Destination);
-        bytesWritten = result ? utf8Formatted.Length : default;
-        return result;
+        if (utf8Formatted.TryCopyTo(utf8Destination))
+        {
+            bytesWritten = utf8Formatted.Length;
+            return true;
+        }
+
+        bytesWritten = default;
+        return false;
     }
 }
