@@ -12,7 +12,7 @@ partial struct Unit
         =>
         UnitFormatter.FormatToUtf8(format).ToArray();
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format)
+    public bool TryFormat(Span<char> destination, out int charsWritten, params ReadOnlySpan<char> format)
     {
         var formatted = UnitFormatter.Format(format);
 
@@ -26,7 +26,7 @@ partial struct Unit
         return false;
     }
 
-    public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, ReadOnlySpan<char> format)
+    public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, params ReadOnlySpan<char> format)
     {
         var utf8Formatted = UnitFormatter.FormatToUtf8(format);
 
