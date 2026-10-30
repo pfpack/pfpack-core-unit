@@ -33,8 +33,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Unit\InnerFormat\" />
-  </ItemGroup>
-
 </Project>
