@@ -6,7 +6,7 @@ namespace System;
 
 partial struct Unit
 {
-    [Obsolete($"This method is not intended for use. Call Equals(Unit) instead.")]
+    [Obsolete(UnitObsoleteMessages.EqualsObjectNotIntended_CallEqualsUnit)]
     public override bool Equals([NotNullWhen(true)] object? obj)
         =>
         obj is Unit;

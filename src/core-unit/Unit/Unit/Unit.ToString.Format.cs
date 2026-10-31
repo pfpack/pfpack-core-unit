@@ -2,7 +2,7 @@
 
 partial struct Unit
 {
-    [Obsolete("This method is not intended for use. Call Format instead.")]
+    [Obsolete(UnitObsoleteMessages.ToStringNotIntended_CallFormat)]
     public string ToString(string? format)
         =>
         Format(format);
