@@ -4,7 +4,7 @@ partial class UnitFormatter
 {
     internal static string Format(ReadOnlySpan<char> format)
         =>
-        InnerGetEffectiveFormat(format) switch
+        InnerNormalizeFormat(format) switch
         {
             // Unit Canonical, JSON object, and Empty formats
             ['U' or 'u'] => "()",
