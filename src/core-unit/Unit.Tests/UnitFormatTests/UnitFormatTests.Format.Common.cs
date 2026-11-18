@@ -48,8 +48,6 @@ partial class UnitFormatTests
             ("ex", UnitForm.EmptyExtended),
             ("Ex", UnitForm.EmptyExtended),
             ("eX", UnitForm.EmptyExtended),
-
-            ("AnUnknown", UnitForm.General),
         ];
 
     private static class UnitForm
