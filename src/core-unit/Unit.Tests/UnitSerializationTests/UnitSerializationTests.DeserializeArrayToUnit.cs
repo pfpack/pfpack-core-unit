@@ -50,11 +50,15 @@ partial class UnitSerializationTests
     {
         get
         {
-            var arrays = new JsonArray[]
-            {
+            IEnumerable<JsonArray> arrays =
+            [
                 [],
-                new(new JsonArray(null, true, false, -1, 0, 1.1m, 1.2, "2"))
-            };
+                [
+                    null, true, false, -1, 0, 1.1m, 1.2, "2",
+                    (JsonArray)[],
+                    (JsonArray)([true, false, null, -2, 0, 2.1m, 2.2, "3"]),
+                ],
+            ];
 
             foreach (var array in arrays)
             {
