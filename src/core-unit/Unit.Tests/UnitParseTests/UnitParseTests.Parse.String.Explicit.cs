@@ -32,7 +32,7 @@ partial class UnitParseTests
     {
         var actual = TUnit.Parse(s, null);
 
-        AssertHelper.DefaultStruct(in actual);
+        AssertHelper.AssertDefault(in actual);
     }
 
     private static void Inner_TryParseStringExplicit_Succeeds<TUnit>(string s)
@@ -41,7 +41,7 @@ partial class UnitParseTests
         var actual = TUnit.TryParse(s, null, out var result);
 
         Assert.True(actual);
-        AssertHelper.DefaultStruct(in result);
+        AssertHelper.AssertDefault(in result);
     }
 
     private static void Inner_ParseStringExplicit_NullInput_Fails<TUnit>()
@@ -56,6 +56,6 @@ partial class UnitParseTests
         var actual = TUnit.TryParse(null, null, out var result);
 
         Assert.False(actual);
-        AssertHelper.DefaultStruct(in result);
+        AssertHelper.AssertDefault(in result);
     }
 }

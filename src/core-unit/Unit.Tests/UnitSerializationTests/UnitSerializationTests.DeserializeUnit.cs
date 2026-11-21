@@ -13,7 +13,7 @@ partial class UnitSerializationTests
     {
         var source = JsonSerializer.Serialize(new JsonObject());
         var unit = JsonSerializer.Deserialize<Unit>(source, options);
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -22,7 +22,7 @@ partial class UnitSerializationTests
     {
         var source = new JsonObject();
         var unit = JsonSerializer.Deserialize<Unit>(source, options);
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -32,7 +32,7 @@ partial class UnitSerializationTests
         var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode());
         var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
         var unit = result!.Value;
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -42,6 +42,6 @@ partial class UnitSerializationTests
         var source = BuildDtoWithUnitValueNode();
         var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
         var unit = result!.Value;
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 }

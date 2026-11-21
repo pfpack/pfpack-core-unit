@@ -24,7 +24,7 @@ partial class UnitParseTests
         ReadOnlySpan<byte> span = s is null ? null : Encoding.UTF8.GetBytes(s);
         var actual = TUnit.Parse(span, null);
 
-        AssertHelper.DefaultStruct(in actual);
+        AssertHelper.AssertDefault(in actual);
     }
 
     private static void Inner_TryParseSpanUtf8Explicit_Succeeds<TUnit>(string? s)
@@ -34,6 +34,6 @@ partial class UnitParseTests
         var actual = TUnit.TryParse(span, null, out var result);
 
         Assert.True(actual);
-        AssertHelper.DefaultStruct(in result);
+        AssertHelper.AssertDefault(in result);
     }
 }

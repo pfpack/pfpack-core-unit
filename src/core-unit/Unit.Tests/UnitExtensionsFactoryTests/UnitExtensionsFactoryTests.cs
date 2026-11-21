@@ -11,7 +11,7 @@ public static class UnitExtensionsFactoryTests
     public static void ToUnit_Int32_ExpectDefault(int value)
     {
         var unit = value.ToUnit();
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -21,7 +21,7 @@ public static class UnitExtensionsFactoryTests
     public static void ToUnit_Int32Nullable_ExpectDefault(int? value)
     {
         var unit = value.ToUnit();
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -31,6 +31,6 @@ public static class UnitExtensionsFactoryTests
     public static void ToUnit_String_ExpectDefault(string? value)
     {
         var unit = value.ToUnit();
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 }

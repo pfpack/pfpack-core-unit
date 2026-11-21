@@ -16,7 +16,7 @@ partial class UnitSerializationTests
     {
         var sourceString = JsonSerializer.Serialize(source);
         var unit = JsonSerializer.Deserialize<Unit>(sourceString, options);
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -26,7 +26,7 @@ partial class UnitSerializationTests
         JsonSerializerOptions? options)
     {
         var unit = JsonSerializer.Deserialize<Unit>(source, options);
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -38,7 +38,7 @@ partial class UnitSerializationTests
         var sourceString = JsonSerializer.Serialize(BuildDtoWithValueNode(source));
         var result = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
         var unit = result!.Value;
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -49,7 +49,7 @@ partial class UnitSerializationTests
     {
         var result = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithValueNode(source), options);
         var unit = result!.Value;
-        AssertHelper.DefaultStruct(in unit);
+        AssertHelper.AssertDefault(in unit);
     }
 
     public static IEnumerable<TheoryDataRow<JsonObject, JsonSerializerOptions?>> DeserializeNonEmptyObjectToUnit_ExpectNoException_Cases

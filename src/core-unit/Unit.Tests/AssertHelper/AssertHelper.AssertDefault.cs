@@ -4,13 +4,13 @@ namespace PrimeFuncPack.Core.Tests;
 
 partial class AssertHelper
 {
-    internal static void DefaultStruct<T>(scoped ref readonly T value)
+    internal static void AssertDefault<T>(scoped ref readonly T value)
         where T : struct
     {
         T defaultValue = default;
-        var expected = InnerToBytes(in defaultValue);
+        var expected = StructConverter.ToBytes(in defaultValue);
 
-        var actual = InnerToBytes(in value);
+        var actual = StructConverter.ToBytes(in value);
 
         Assert.Equal(expected, actual);
     }
