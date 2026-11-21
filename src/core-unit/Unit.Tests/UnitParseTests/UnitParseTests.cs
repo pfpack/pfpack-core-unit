@@ -3,7 +3,7 @@ using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
-partial class UnitFormatTests
+public static partial class UnitParseTests
 {
     public static IEnumerable<TheoryDataRow<string?>> ParseCases
         =>

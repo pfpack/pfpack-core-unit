@@ -4,7 +4,7 @@ using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
-partial class UnitFormatTests
+partial class UnitParseTests
 {
     [Theory]
     [MemberData(nameof(ParseCases))]
