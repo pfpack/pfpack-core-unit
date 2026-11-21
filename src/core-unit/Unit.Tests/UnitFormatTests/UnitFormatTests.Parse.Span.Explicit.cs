@@ -23,9 +23,7 @@ partial class UnitFormatTests
         ReadOnlySpan<char> span = s;
         var actual = TUnit.Parse(span, null);
 
-        var expected = default(TUnit);
-
-        Assert.StrictEqual(expected, actual);
+        AssertHelper.DefaultStruct(in actual);
     }
 
     private static void Inner_TryParseSpanExplicit_Succeeds<TUnit>(string? s)
@@ -34,9 +32,7 @@ partial class UnitFormatTests
         ReadOnlySpan<char> span = s;
         var actual = TUnit.TryParse(span, null, out var result);
 
-        var expected = default(TUnit);
-
         Assert.True(actual);
-        Assert.StrictEqual(expected, result);
+        AssertHelper.DefaultStruct(in result);
     }
 }
