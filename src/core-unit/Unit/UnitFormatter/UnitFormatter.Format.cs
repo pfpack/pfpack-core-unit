@@ -2,7 +2,7 @@
 
 partial class UnitFormatter
 {
-    internal static string Format(ReadOnlySpan<char> format)
+    internal static string Format(scoped ReadOnlySpan<char> format)
         =>
         InnerNormalizeFormat(format) switch
         {

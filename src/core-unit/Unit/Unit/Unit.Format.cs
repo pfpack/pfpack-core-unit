@@ -4,15 +4,15 @@ namespace System;
 
 partial struct Unit
 {
-    public string Format(params ReadOnlySpan<char> format)
+    public string Format(params scoped ReadOnlySpan<char> format)
         =>
         UnitFormatter.Format(format);
 
-    public byte[] FormatToUtf8(params ReadOnlySpan<char> format)
+    public byte[] FormatToUtf8(params scoped ReadOnlySpan<char> format)
         =>
         UnitFormatter.FormatToUtf8(format).ToArray();
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, params ReadOnlySpan<char> format)
+    public bool TryFormat(Span<char> destination, out int charsWritten, params scoped ReadOnlySpan<char> format)
     {
         var formatted = UnitFormatter.Format(format);
 
@@ -26,7 +26,7 @@ partial struct Unit
         return false;
     }
 
-    public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, params ReadOnlySpan<char> format)
+    public bool TryFormat(Span<byte> utf8Destination, out int bytesWritten, params scoped ReadOnlySpan<char> format)
     {
         var utf8Formatted = UnitFormatter.FormatToUtf8(format);
 

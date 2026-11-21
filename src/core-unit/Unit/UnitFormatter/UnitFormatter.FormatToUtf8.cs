@@ -2,7 +2,7 @@
 
 partial class UnitFormatter
 {
-    internal static ReadOnlySpan<byte> FormatToUtf8(ReadOnlySpan<char> format)
+    internal static ReadOnlySpan<byte> FormatToUtf8(scoped ReadOnlySpan<char> format)
         =>
         InnerNormalizeFormat(format) switch
         {
