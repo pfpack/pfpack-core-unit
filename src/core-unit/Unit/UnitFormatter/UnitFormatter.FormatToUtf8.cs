@@ -4,7 +4,7 @@ partial class UnitFormatter
 {
     internal static ReadOnlySpan<byte> FormatToUtf8(scoped ReadOnlySpan<char> format)
         =>
-        InnerNormalizeFormat(format) switch
+        NormalizeFormat(format) switch
         {
             // Unit Canonical, JSON object, and Empty formats
             ['U' or 'u'] => "()"u8,
