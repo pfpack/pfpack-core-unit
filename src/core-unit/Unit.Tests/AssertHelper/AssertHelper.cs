@@ -8,9 +8,14 @@ internal static partial class AssertHelper
     private static ReadOnlySpan<byte> InnerToBytes<T>(scoped ref readonly T value)
         where T : struct
     {
-        var valueSpan = MemoryMarshal.CreateReadOnlySpan(in value, 1);
+        // A defensive copy of the referenced struct value
+        return InnerAsBytes(in value).ToArray();
+    }
 
-        return MemoryMarshal.AsBytes(valueSpan)
-            .ToArray(); // a defensive copy of the referenced struct value
+    private static ReadOnlySpan<byte> InnerAsBytes<T>(scoped ref readonly T value)
+        where T : struct
+    {
+        var valueSpan = MemoryMarshal.CreateReadOnlySpan(in value, 1);
+        return MemoryMarshal.AsBytes(valueSpan);
     }
 }
