@@ -22,6 +22,7 @@ public static partial class UnitSerializationTests
             JsonSerializerOptions.Default,
             new(JsonSerializerDefaults.General),
             new(JsonSerializerDefaults.Web),
+            new(JsonSerializerDefaults.Strict),
         ];
 
     private static JsonObject BuildDtoWithUnitValueNode()
