@@ -12,7 +12,8 @@ partial class UnitSerializationTests
     public static void DeserializeUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = JsonSerializer.Serialize(new JsonObject());
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        var unit = JsonSerializer.Deserialize<Unit>(source, options);
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
@@ -20,7 +21,8 @@ partial class UnitSerializationTests
     public static void DeserializeUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = new JsonObject();
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        var unit = JsonSerializer.Deserialize<Unit>(source, options);
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
@@ -28,7 +30,9 @@ partial class UnitSerializationTests
     public static void DeserializeDtoWithUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode());
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var unit = result!.Value;
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
@@ -36,6 +40,8 @@ partial class UnitSerializationTests
     public static void DeserializeDtoWithUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = BuildDtoWithUnitValueNode();
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var unit = result!.Value;
+        AssertHelper.DefaultStruct(in unit);
     }
 }

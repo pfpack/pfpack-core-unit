@@ -12,14 +12,16 @@ partial class UnitSerializationTests
     public static void DeserializeNullToUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
         var sourceString = JsonSerializer.Serialize<JsonNode?>(null);
-        _ = JsonSerializer.Deserialize<Unit>(sourceString, options);
+        var unit = JsonSerializer.Deserialize<Unit>(sourceString, options);
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeNullToUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
-        _ = JsonSerializer.Deserialize<Unit>((JsonNode?)null, options);
+        var unit = JsonSerializer.Deserialize<Unit>((JsonNode?)null, options);
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
@@ -27,13 +29,17 @@ partial class UnitSerializationTests
     public static void DeserializeDtoWithNullToDtoWithUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
         var sourceString = JsonSerializer.Serialize<JsonNode?>(BuildDtoWithNullValueNode());
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(sourceString, options);
+        var unit = result!.Value;
+        AssertHelper.DefaultStruct(in unit);
     }
 
     [Theory]
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeDtoWithNullToDtoWithUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithNullValueNode(), options);
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(BuildDtoWithNullValueNode(), options);
+        var unit = result!.Value;
+        AssertHelper.DefaultStruct(in unit);
     }
 }
