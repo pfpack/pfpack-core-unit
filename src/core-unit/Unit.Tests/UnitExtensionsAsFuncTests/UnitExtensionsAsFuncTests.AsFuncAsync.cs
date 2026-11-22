@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Core.Tests;
 partial class UnitExtensionsAsFuncTests
 {
     [Fact]
-    public static async Task AsFuncAsync00_ExpectInvokedAsync()
+    public static async Task AsFuncAsync00_ExpectInvoked()
     {
         var isInvoked = false;
 
@@ -24,7 +24,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync01_ExpectInvokedAsync()
+    public static async Task AsFuncAsync01_ExpectInvoked()
     {
         var param1 = new ActionParam1();
 
@@ -43,7 +43,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync02_ExpectInvokedAsync()
+    public static async Task AsFuncAsync02_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -67,7 +67,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync03_ExpectInvokedAsync()
+    public static async Task AsFuncAsync03_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -96,7 +96,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync04_ExpectInvokedAsync()
+    public static async Task AsFuncAsync04_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -130,7 +130,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync05_ExpectInvokedAsync()
+    public static async Task AsFuncAsync05_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -169,7 +169,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync06_ExpectInvokedAsync()
+    public static async Task AsFuncAsync06_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -213,7 +213,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync07_ExpectInvokedAsync()
+    public static async Task AsFuncAsync07_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -263,7 +263,7 @@ partial class UnitExtensionsAsFuncTests
 
 
     [Fact]
-    public static async Task AsFuncAsync08_ExpectInvokedAsync()
+    public static async Task AsFuncAsync08_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -317,7 +317,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync09_ExpectInvokedAsync()
+    public static async Task AsFuncAsync09_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -376,7 +376,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync10_ExpectInvokedAsync()
+    public static async Task AsFuncAsync10_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -441,7 +441,7 @@ partial class UnitExtensionsAsFuncTests
 
 
     [Fact]
-    public static async Task AsFuncAsync11_ExpectInvokedAsync()
+    public static async Task AsFuncAsync11_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -510,7 +510,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync12_ExpectInvokedAsync()
+    public static async Task AsFuncAsync12_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -584,7 +584,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync13_ExpectInvokedAsync()
+    public static async Task AsFuncAsync13_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -664,7 +664,7 @@ partial class UnitExtensionsAsFuncTests
 
 
     [Fact]
-    public static async Task AsFuncAsync14_ExpectInvokedAsync()
+    public static async Task AsFuncAsync14_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -748,7 +748,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync15_ExpectInvokedAsync()
+    public static async Task AsFuncAsync15_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
@@ -837,7 +837,7 @@ partial class UnitExtensionsAsFuncTests
     }
 
     [Fact]
-    public static async Task AsFuncAsync16_ExpectInvokedAsync()
+    public static async Task AsFuncAsync16_ExpectInvoked()
     {
         var param1 = new ActionParam1();
         var param2 = new ActionParam2();
