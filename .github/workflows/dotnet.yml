@@ -42,9 +42,6 @@ jobs:
     - name: Pack Unit
       run: dotnet pack ./src/*/*/Unit.csproj --no-build --output ~/nuget -c Release
 
-    - name: Run Unit.Tests.Old
-      run: dotnet run --project ./src/*/*/Unit.Tests.Old.csproj --no-build -c Release
-
     - name: Run Unit.Tests
       run: dotnet run --project ./src/*/*/Unit.Tests.csproj --no-build -c Release
 
