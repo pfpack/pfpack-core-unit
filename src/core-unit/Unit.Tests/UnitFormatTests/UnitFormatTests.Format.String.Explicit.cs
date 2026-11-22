@@ -9,9 +9,7 @@ partial class UnitFormatTests
     [MemberData(nameof(ExpectedFormatCases))]
     public static void FormatToStringExplicit_ExpectCorrespondingResult(string? format, string expected)
     {
-        var source = (IFormattable)default(Unit);
-        var actual = source.ToString(format, null);
-
+        var actual = ((IFormattable)UnitInstance).ToString(format, null);
         Assert.Equal(expected, actual);
     }
 }

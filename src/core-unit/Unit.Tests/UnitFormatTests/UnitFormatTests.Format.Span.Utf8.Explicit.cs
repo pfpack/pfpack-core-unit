@@ -34,8 +34,7 @@ partial class UnitFormatTests
 
     private static (bool Result, int BytesWritten) InnerFormatToSpanUtf8Explicit(Span<byte> destination, ReadOnlySpan<char> format)
     {
-        var source = (IUtf8SpanFormattable)default(Unit);
-        var result = source.TryFormat(destination, out var bytesWritten, format, null);
+        var result = ((IUtf8SpanFormattable)UnitInstance).TryFormat(destination, out var bytesWritten, format, null);
         return (result, bytesWritten);
     }
 }

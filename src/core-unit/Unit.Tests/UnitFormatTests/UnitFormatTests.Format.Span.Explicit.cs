@@ -34,8 +34,7 @@ partial class UnitFormatTests
 
     private static (bool Result, int CharsWritten) InnerFormatToSpanExplicit(Span<char> destination, ReadOnlySpan<char> format)
     {
-        var source = (ISpanFormattable)default(Unit);
-        var result = source.TryFormat(destination, out var charsWritten, format, null);
+        var result = ((ISpanFormattable)UnitInstance).TryFormat(destination, out var charsWritten, format, null);
         return (result, charsWritten);
     }
 }

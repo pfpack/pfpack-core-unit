@@ -34,8 +34,7 @@ partial class UnitFormatTests
 
     private static (bool Result, int CharsWritten) InnerFormatToSpan(Span<char> destination, ReadOnlySpan<char> format)
     {
-        var source = default(Unit);
-        var result = source.TryFormat(destination, out var charsWritten, format);
+        var result = UnitInstance.TryFormat(destination, out var charsWritten, format);
         return (result, charsWritten);
     }
 }

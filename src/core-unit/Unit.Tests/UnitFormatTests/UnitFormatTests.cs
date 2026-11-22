@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PrimeFuncPack.Core.Tests;
 
 public static partial class UnitFormatTests
 {
+    private static Unit UnitInstance => default;
+
     public static IEnumerable<TheoryDataRow<string?, string>> ExpectedFormatCases
         =>
         [

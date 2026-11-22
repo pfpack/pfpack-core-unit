@@ -10,9 +10,7 @@ partial class UnitFormatTests
     [Obsolete("Test of Redirect from the legacy pattern to the new method.")]
     public static void FormatToStringRedirect_ExpectCorrespondingResult(string? format, string expected)
     {
-        var source = default(Unit);
-        var actual = source.ToString(format);
-
+        var actual = UnitInstance.ToString(format);
         Assert.Equal(expected, actual);
     }
 }
