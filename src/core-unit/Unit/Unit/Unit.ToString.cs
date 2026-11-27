@@ -1,15 +1,11 @@
-﻿namespace System;
+﻿#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
+
+namespace System;
 
 partial struct Unit
 {
+    [Obsolete(UnitObsoleteMessages.ToStringNotIntended_CallFormat)]
     public override string ToString()
         =>
-        UnitForm.General;
-
-    // Redirect from the legacy pattern to the new method.
-
-    [Obsolete($"This method is not intended for use. Call {nameof(Format)} instead.")]
-    public string ToString(string? format)
-        =>
-        Format(format.AsSpan());
+        Format();
 }

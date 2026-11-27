@@ -2,10 +2,6 @@
 
 partial struct Unit
 {
-    // We maintain that Unit can be derived from any input value, including null.
-    // But for the parsing operations, we keep consistency with the IParsable<T>
-    // contract and expect that a string input is provided to succeed.
-
     static Unit IParsable<Unit>.Parse(string s, IFormatProvider? provider)
     {
         _ = s ?? throw new ArgumentNullException(nameof(s));

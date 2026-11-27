@@ -11,8 +11,9 @@ partial class UnitSerializationTests
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
-        var source = JsonSerializer.Serialize(new JsonObject()); // default options expected
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        var source = JsonSerializer.Serialize(new JsonObject());
+        var unit = JsonSerializer.Deserialize<Unit>(source, options);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -20,15 +21,18 @@ partial class UnitSerializationTests
     public static void DeserializeUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = new JsonObject();
-        _ = JsonSerializer.Deserialize<Unit>(source, options);
+        var unit = JsonSerializer.Deserialize<Unit>(source, options);
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
     [MemberData(nameof(JsonSerializerOptionsCases))]
     public static void DeserializeDtoWithUnitFromString_ExpectNoException(JsonSerializerOptions? options)
     {
-        var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode()); // default options expected
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var source = JsonSerializer.Serialize(BuildDtoWithUnitValueNode());
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var unit = result!.Value;
+        AssertHelper.AssertDefault(in unit);
     }
 
     [Theory]
@@ -36,6 +40,8 @@ partial class UnitSerializationTests
     public static void DeserializeDtoWithUnitFromNode_ExpectNoException(JsonSerializerOptions? options)
     {
         var source = BuildDtoWithUnitValueNode();
-        _ = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var result = JsonSerializer.Deserialize<DtoWithUnit>(source, options);
+        var unit = result!.Value;
+        AssertHelper.AssertDefault(in unit);
     }
 }
